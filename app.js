@@ -14,7 +14,7 @@
 const TRIP_PLANNER_URL = 'https://developer.trimet.org/ws/V1/trips/tripplanner';
 
 
-function getDataFromTripPlanner(start, destination1, callback) {
+function getDataFromTripPlanner(start, errand1, callback) {
   var query = {
     'path': '',
     'appID': ''
@@ -24,13 +24,15 @@ function getDataFromTripPlanner(start, destination1, callback) {
   $.getJSON(TRIP_PLANNER_URL, query, callback);
 }
 
+
 function listenInputExecute() {
 
   $('button').click(function () {
-    var destination1 = $('#waypoint1').val();
-    var start = $('#begin').val();
+    var errand1 = $('#errand1').val();
+    var start = $('#start').val();
   });
-  getDataFromTripPlanner(start, destination1);
+  getDataFromTripPlanner(start, errand1);
+  
 }
 
 $(listenInputExecute)
