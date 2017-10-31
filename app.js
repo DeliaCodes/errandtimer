@@ -1,6 +1,6 @@
 "use strict";
 
-//transit trip planner api
+//transit trip planner api url
 const TRIP_PLANNER_URL = 'https://developer.trimet.org/ws/V1/trips/tripplanner';
 
 //API call
@@ -17,16 +17,17 @@ function getDataFromTripPlanner(start, errand1, date, time, callback) {
   $.getJSON(TRIP_PLANNER_URL, query, callback);
 }
 
-//process data function goes here
+//process data function 
 function processData (data) {
 console.log(data);
 }
 
+//display data function
 function displayData (data) {
 processData(data);
 }
 
-
+//gets input from user, passes it to the API call function 
 function listenInputExecute() {
 
   $('#whichErrand').submit(function () {
