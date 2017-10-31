@@ -8,23 +8,23 @@ function getDataFromTripPlanner(start, errand1, date, time, callback) {
   var query = {
     'path': 'https://developer.trimet.org/ws/V1/trips/tripplanner',
     'appID': '1DA0BDD6A9377B0851E84C412',
-    'date' : 'date',
-    'time' : 'time',
-    'fromPlace' : 'start',
-    'toPlace' : 'errand1'
+    'date': 'date',
+    'time': 'time',
+    'fromPlace': 'start',
+    'toPlace': 'errand1'
   };
 
   $.getJSON(TRIP_PLANNER_URL, query, callback);
 }
 
 //process data function 
-function processData (data) {
-console.log(data);
+function processData(data) {
+  console.log(data);
 }
 
 //display data function
-function displayData (data) {
-processData(data);
+function displayData(data) {
+  processData(data);
 }
 
 //gets input from user, passes it to the API call function 
