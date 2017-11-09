@@ -7,6 +7,7 @@ const MAPS_API_URL = '';
 function getDataFromMaps(start, errand1, callback) {
   var query = {
     'path': '',
+    'key' : 'AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0'
   };
 
   $.getJSON(MAPS_API_URL, query, callback);
@@ -17,19 +18,25 @@ function processData(data) {
   console.log(data);
 }
 
-//display data function
+/
+//displays data to user
 function displayData(data) {
   processData(data);
 }
 
-function listenInputExecute() {
-
+//gets input from user
+function getInput () {
   $('#errandForm').submit(function () {
     event.preventDefault();
     var errand1 = $('#errand1').val();
     var start = $('#start').val();
   });
-  getDataFromTripPlanner(start, errand1, displayData);
+}
+
+function listenInputExecute() {
+getInput();
+
+  getDataFromMaps(start, errand1, displayData);
 }
 
 $(listenInputExecute);
