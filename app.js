@@ -3,7 +3,7 @@
 
 const MAPS_API_URL = '';
 
-//API call
+/*//API call - am I required to use this?
 function getDataFromMaps(start, errand1, callback) {
   var query = {
     'path': '',
@@ -11,6 +11,19 @@ function getDataFromMaps(start, errand1, callback) {
   };
 
   $.getJSON(MAPS_API_URL, query, callback);
+}*/
+
+function initMap () {
+var directionsService = new google.maps.DirectionsService;
+var request = {
+  origin : start,
+  destination : start,
+  waypoints : errand1,
+  optimizeWaypoints: true,
+travelMode : 'DRIVING'
+}
+
+
 }
 
 //process data function 
