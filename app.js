@@ -1,18 +1,5 @@
 "use strict";
 
-
-const MAPS_API_URL = '';
-
-/*//API call - am I required to use this?
-function getDataFromMaps(start, errand1, callback) {
-  var query = {
-    'path': '',
-    'key' : 'AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0'
-  };
-
-  $.getJSON(MAPS_API_URL, query, callback);
-}*/
-
 function initMap () {
 var directionsService = new google.maps.DirectionsService;
 var request = {
@@ -22,7 +9,11 @@ var request = {
   optimizeWaypoints: true,
 travelMode : 'DRIVING'
 }
+directionsService.route(request );
 
+}
+
+function callBack (response, status) {
 
 }
 
@@ -41,15 +32,14 @@ function displayData(data) {
 function getInput () {
   $('#errandForm').submit(function () {
     event.preventDefault();
-    var errand1 = $('#errand1').val();
+    var errand1 =[];
+    errand1.push($('#errand1').val(););
     var start = $('#start').val();
   });
 }
 
 function listenInputExecute() {
 getInput();
-
-  getDataFromMaps(start, errand1, displayData);
 }
 
 $(listenInputExecute);
