@@ -9,12 +9,15 @@ var request = {
   optimizeWaypoints: true,
 travelMode : 'DRIVING'
 }
-directionsService.route(request );
-
+directionsService.route(request, callBack);
 }
 
 function callBack (response, status) {
-
+  if (status === 'OK') {
+    console.log(response);
+    alert('ok!');
+  }
+  else {alert('error!');}
 }
 
 //process data function 
@@ -22,7 +25,7 @@ function processData(data) {
   console.log(data);
 }
 
-/
+
 //displays data to user
 function displayData(data) {
   processData(data);
@@ -33,7 +36,7 @@ function getInput () {
   $('#errandForm').submit(function () {
     event.preventDefault();
     var errand1 =[];
-    errand1.push($('#errand1').val(););
+    errand1.push($('#errand1').val());
     var start = $('#start').val();
   });
 }
