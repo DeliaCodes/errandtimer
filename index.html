@@ -16,6 +16,9 @@
 			<label for="startTime"></label>
 			<input id="submit" type="submit" value="submit">
 		</form>
+		<div id="results">
+
+		</div>
 	</main>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<!--<script type="text/javascript" src="app.js"></script>-->
@@ -32,11 +35,12 @@ function callBack (response, status) {
   if (status === 'OK') {
     console.log(response);
     alert('ok!');
+		processData(response)
   }
   else {alert('error!');}
 }
 
-//makes the request
+//makes the route request
 function route (start,errand1) {
 	var request = {
   origin : start,
@@ -50,13 +54,17 @@ var directionsService = new google.maps.DirectionsService;
 
 }
 
-//process data function 
-const processData (data) => 
+//process data function - pure - uses implicit coercion for values
+const processData = (data) => {
+var totalDuration = 0;
+let leg1 = data[0].routes.[0].legs.[0].duration.text;
+let leg2 = data[0].routes.[0].legs.[1].duration.text;
+return totalDuration= leg1 + leg2; }
 
 
-//displays data to user
-function displayData(data) {
-  processData(data);
+//displays data to user - impure
+function displayData(totalDuration) {
+
 }
 
 //gets input from user
