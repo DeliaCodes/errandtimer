@@ -30,12 +30,13 @@ function initMap () {
 $(listenInputExecute);
 }
 
-//success of response execution
+//success of response execution - pure
 function callBack (response, status) {
   if (status === 'OK') {
     console.log(response);
     alert('ok!');
-		processData(response)
+		processData(response);
+		displayData(totalDuration);
   }
   else {alert('error!');}
 }
@@ -57,14 +58,14 @@ var directionsService = new google.maps.DirectionsService;
 //process data function - pure - uses implicit coercion for values
 const processData = (data) => {
 var totalDuration = 0;
-let leg1 = data[0].routes.[0].legs.[0].duration.text;
-let leg2 = data[0].routes.[0].legs.[1].duration.text;
+let leg1 = data[0].routes.0.legs.0.duration.text;
+let leg2 = data[0].routes.0.legs.1.duration.text;
 return totalDuration= leg1 + leg2; }
 
 
 //displays data to user - impure
 function displayData(totalDuration) {
-
+$('#results').append('<p> The total duration of your errands is' + totalDuration + ' .</p>');
 }
 
 //gets input from user
