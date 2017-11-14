@@ -77,8 +77,8 @@ function callBack (response, status) {
 //process data function - pure - uses implicit coercion for values
 const processData = (data) => {
 var totalDuration = 0;
-let leg1 = data[0].routes.0.legs.0.duration.text;
-let leg2 = data[0].routes.0.legs.1.duration.text;
+let leg1 = data.routes[0].legs[0].duration.text;
+let leg2 = data.routes[0].legs[1].duration.text;
 return totalDuration= leg1 + leg2; }
 
 //displays data to user - impure
