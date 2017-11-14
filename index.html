@@ -18,9 +18,69 @@
 		</form>
 	</main>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" src="app.js"></script>
-	<script
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callback=initMap">
+	<!--<script type="text/javascript" src="app.js"></script>-->
+	<script>
+	"use strict";
+
+//starts the process
+function initMap () {
+$(listenInputExecute);
+}
+
+//success of response execution
+function callBack (response, status) {
+  if (status === 'OK') {
+    console.log(response);
+    alert('ok!');
+  }
+  else {alert('error!');}
+}
+
+//makes the request
+function route (start,errand1) {
+	var request = {
+  origin : start,
+  destination : start,
+  waypoints : errand1,
+  optimizeWaypoints: true,
+travelMode : 'DRIVING'
+}
+var directionsService = new google.maps.DirectionsService;
+	directionsService.route(request, callBack);
+
+}
+
+//process data function 
+const processData (data) => 
+
+
+//displays data to user
+function displayData(data) {
+  processData(data);
+}
+
+//gets input from user
+function getInput () {
+  $('#errandForm').submit(function () {
+    event.preventDefault();
+		var errand1= $('#errand1').val()
+		var start = $('#start').val();
+	return start, errand1;
+  });
+}
+
+const addErrand = (input) => [{ location : input}]
+
+function listenInputExecute() {
+getInput();
+route(start, addErrand(errand1));
+}
+
+
+
+	</script>
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callbackcallback=initMap">
 	</script>
 </body>
 
