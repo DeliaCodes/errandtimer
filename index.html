@@ -25,47 +25,9 @@
 	<script>
 	"use strict";
 
-//starts the process
+//starts the process - impure d/t jquery
 function initMap () {
 $(listenInputExecute);
-}
-
-//success of response execution - pure
-function callBack (response, status) {
-  if (status === 'OK') {
-    console.log(response);
-    alert('ok!');
-		processData(response);
-		displayData(totalDuration);
-  }
-  else {alert('error!');}
-}
-
-//makes the route request
-function route (start,errand1) {
-	var request = {
-  origin : start,
-  destination : start,
-  waypoints : errand1,
-  optimizeWaypoints: true,
-travelMode : 'DRIVING'
-}
-var directionsService = new google.maps.DirectionsService;
-	directionsService.route(request, callBack);
-
-}
-
-//process data function - pure - uses implicit coercion for values
-const processData = (data) => {
-var totalDuration = 0;
-let leg1 = data[0].routes.0.legs.0.duration.text;
-let leg2 = data[0].routes.0.legs.1.duration.text;
-return totalDuration= leg1 + leg2; }
-
-
-//displays data to user - impure
-const displayData = (totalDuration) => {
-$('#results').append('<p> The total duration of your errands is' + totalDuration + ' .</p>');
 }
 
 //gets input from user - impure
@@ -81,14 +43,48 @@ const getInput = () => {
 //adds errand to to object - pure
 const addErrand = (input) => [{ location : input}]
 
-//is this needed? adds input, invokes route - pure
+//is this needed? adds input, invokes route - pure d/t lack of jquery
 const listenInputExecute = () => {
 getInput();
 route(start, addErrand(errand1));
 }
 
+//makes the route request - impure d/t the google maps
+function route (start,errand1) {
+	var request = {
+  origin : start,
+  destination : start,
+  waypoints : errand1,
+  optimizeWaypoints: true,
+travelMode : 'DRIVING'
+}
+//does this need to be here? or can this be broken out?
+var directionsService = new google.maps.DirectionsService;
+	directionsService.route(request, callBack);
+}
 
+//success of response execution - pure
+function callBack (response, status) {
+  if (status === 'OK') {
+    console.log(response);
+    alert('ok!');
+		processData(response);
+		displayData(totalDuration);
+  }
+  else {alert('error!');}
+}
 
+//process data function - pure - uses implicit coercion for values
+const processData = (data) => {
+var totalDuration = 0;
+let leg1 = data[0].routes.0.legs.0.duration.text;
+let leg2 = data[0].routes.0.legs.1.duration.text;
+return totalDuration= leg1 + leg2; }
+
+//displays data to user - impure
+const displayData = (totalDuration) => {
+$('#results').append('<p> The total duration of your errands is' + totalDuration + ' .</p>');
+}
 	</script>
 	<script async defer
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callbackcallback=initMap">
