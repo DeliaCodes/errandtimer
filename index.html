@@ -21,7 +21,6 @@
 		</div>
 	</main>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<!--<script type="text/javascript" src="app.js"></script>-->
 	<script>
 	"use strict";
 
@@ -72,6 +71,7 @@ function callBack (response, status) {
 const processData = (data) => {
 let leg1 = data.routes[0].legs[0].duration.text;
 let leg2 = data.routes[0].legs[1].duration.text;
+console.log(leg1);
 return leg1 + leg2; }
 
 //displays data to user - impure
@@ -80,7 +80,7 @@ $('#results').append('<p> The total duration of your errands is' + totalDuration
 }
 	</script>
 	<script async defer
-	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callbackcallback=initMap">
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callback=initMap">
 	</script>
 </body>
 
