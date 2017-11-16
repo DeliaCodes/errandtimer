@@ -72,6 +72,7 @@
 
 		//process data function - to do - loop through the data object and add map + reduce
 		const processData = (data) => {
+			console.log(data);
 			let leg1 = data.routes[0].legs[0].duration.text.split(' ').slice(0,1);
 			let leg2 = data.routes[0].legs[1].duration.text.split(' ').slice(0,1);
 		return +leg1 + +leg2;
