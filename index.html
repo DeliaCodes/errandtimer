@@ -62,7 +62,7 @@
 		function callBack(response, status) {
 			if (status === 'OK') {
 				console.log(response);
-				alert('ok!');
+				//alert('ok!');
 				const totalDuration = processData(response);
 				displayData(totalDuration);
 			} else {
@@ -70,7 +70,7 @@
 			}
 		}
 
-		//process data function - to do - loop through the data object and add map + reduce
+		//process data function - to do - loop through the data object and add map + reduce, map get all the legs.duration and then filter.
 		const processData = (data) => {
 			console.log(data);
 			let leg1 = data.routes[0].legs[0].duration.text.split(' ').slice(0,1);
@@ -78,9 +78,9 @@
 		return +leg1 + +leg2;
 		}
 
-		//displays data to user - impure
+		//displays data to user - impure - add detail about your errands like which one.
 		const displayData = (totalDuration) => {
-			$('#results').append('<p> The total duration of your errands is ' + totalDuration + ' .</p>');
+			$('#results').append('<p> The total duration of' + start  'and your errand' + errand1 + ' is ' + totalDuration + ' minutes.</p>');
 		}
 	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callback=initMap">
