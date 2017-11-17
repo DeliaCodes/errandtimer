@@ -23,10 +23,13 @@
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script>
 		"use strict";
+		
+		var	trip = {}
 
 		//starts the process - impure d/t jquery
 		function initMap() {
 			$(getInput);
+			
 		}
 
 		//gets input from user - impure
@@ -35,6 +38,8 @@
 				event.preventDefault();
 				var errand1 = $('#errand1').val()
 				var start = $('#start').val();
+				trip.origin = start;
+				trip.errand = errand1;
 				route(start, addErrand(errand1));
 			});
 		}
@@ -80,7 +85,7 @@
 
 		//displays data to user - impure - add detail about your errands like which one.
 		const displayData = (totalDuration) => {
-			$('#results').append('<p> The total duration of your trip from' + start  'to your errand' + errand1 + ' and back is ' + totalDuration + ' minutes.</p>');
+			$('#results').append('<p> The total duration of the trip from:  ' + trip.origin + ' to the errand: '  + trip.errand + ' and back is ' + totalDuration + ' minutes.</p>');
 		}
 	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callback=initMap">
