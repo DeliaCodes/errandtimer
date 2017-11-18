@@ -70,28 +70,32 @@ const tripAddressesToDisplay = (start,errand1,trip) => {
 		//success of response execution - impure
 		function callBack(response, status) {
 			if (status === 'OK') {
-				console.log(response);
+				//console.log(response);
 				//alert('ok!');
 				const totalDuration = processData(response);
 				displayData(totalDuration);
 			} 
 			}
 		
-
-		const legTimesToDisplay = (leg1, leg2, trip) => trip.legTimes
+//adds times for each leg to the trip object
+		const legTimesToDisplay = (leg1, leg2, trip) => {
+		trip.legTimes = [leg1, leg2];
+		console.log (trip);
+		}
 
 
 		//process data function - to do - loop through the data object and add map + reduce, map get all the legs.duration and then filter.
 		const processData = (data) => {
-			console.log(data);
+			//console.log(data);
 			let leg1 = data.routes[0].legs[0].duration.text.split(' ').slice(0,1);
 			let leg2 = data.routes[0].legs[1].duration.text.split(' ').slice(0,1);
+			legTimesToDisplay(leg1,leg2,trip);
 		return +leg1 + +leg2;
 		}
 
 		//displays data to user - impure - add detail about your errands like which one.
 		const displayData = (totalDuration) => {
-			$('#results').append('<p> The total duration of your trip from ' + trip.origin  + ' to your errand ' + trip.errand + ' and back  is ' + totalDuration + ' minutes.</p>');
+			$('#results').append('<p> The total duration of your trip from ' + trip.origin  + ' to your errand ' + trip.errand + ' and back  is ' + totalDuration + ' minutes.</p>' +'<p>From ' + trip.origin + ' to ' + trip.errand + ' will take ' + trip.legTimes[0] + ' minutes.</p><p> From ' + trip.errand + ' back to ' + trip.origin + ' will take ' + trip.legTimes[1] + ' minutes.</p>');
 		}
 	</script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callback=initMap">
