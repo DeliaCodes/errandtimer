@@ -2,7 +2,7 @@
 
 * As a user, I want an estimate of my total trip duration so that I can better plan my day. Done!
 
-* As a user, I want an estimate for each leg of my trip so that I can mix and match my errands to fit my time and energy window. Working!
+* As a user, I want an estimate for each leg of my trip so that I can mix and match my errands to fit my time and energy window. Done!
 
 Anticipated
 
