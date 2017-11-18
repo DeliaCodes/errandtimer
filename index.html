@@ -32,14 +32,18 @@
 			
 		}
 
+const tripAddressesToDisplay = (start,errand1,trip) => {
+	trip.origin= start;
+	trip.errand = errand1;
+	}
+
 		//gets input from user - impure
 		const getInput = () => {
 			$('#errandForm').submit(function (event) {
 				event.preventDefault();
 				var errand1 = $('#errand1').val()
 				var start = $('#start').val();
-				trip.origin= start;
-				trip.errand = errand1;
+				tripAddressesToDisplay(start,errand1,trip);
 				route(start, addErrand(errand1));
 			});
 		}
@@ -70,10 +74,12 @@
 				//alert('ok!');
 				const totalDuration = processData(response);
 				displayData(totalDuration);
-			} else {
-				alert('error!');
+			} 
 			}
-		}
+		
+
+		const legTimesToDisplay = (leg1, leg2, trip) => trip.legTimes
+
 
 		//process data function - to do - loop through the data object and add map + reduce, map get all the legs.duration and then filter.
 		const processData = (data) => {
