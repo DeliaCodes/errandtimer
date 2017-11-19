@@ -59,19 +59,16 @@ const tripAddressesToDisplay = (start,errand1,trip) => {
 		console.log (trip);
 		}
 
-  const getLegTimeEstimate - ()
-
 
 		//process data function - to do - loop through the data object and add map + reduce, map get all the legs.duration and then filter. instead of process use the value
 		const processData = (data) => {
 			//console.log(data);
 			let leg1Human = data.routes[0].legs[0].duration.text;
       let leg2Human = data.routes[0].legs[1].duration.text;
-      
 			let leg1Time= data.routes[0].legs[0].duration.value;
-			let leg1Time= data.routes[1].legs[0].duration.value;
+			let leg2Time= data.routes[0].legs[1].duration.value;
 			legTimesToDisplay(leg1Human,leg2Human,trip);
-		return +leg1 + +leg2;
+		return leg1Time + leg2Time;
 		}
 
 		//displays data to user - impure - add detail about your errands like which one.
