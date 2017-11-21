@@ -3,3 +3,6 @@
 
 }
 
+#container {
+  display: grid;
+}
