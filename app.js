@@ -47,7 +47,6 @@ const tripAddressesToDisplay = (start,errand1,trip) => {
 		function callBack(response, status) {
 			if (status === 'OK') {
 				//console.log(response);
-				//alert('ok!');
 				const totalDuration = processData(response);
 				displayData(totalDuration);
 			} 
@@ -56,7 +55,7 @@ const tripAddressesToDisplay = (start,errand1,trip) => {
 //adds times for each leg to the trip object
 		const legTimesToDisplay = (leg1, leg2, trip) => {
 		trip.legTimes = [leg1, leg2];
-		console.log (trip);
+		//console.log (trip);
 		};
 
 
@@ -68,10 +67,10 @@ const tripAddressesToDisplay = (start,errand1,trip) => {
 			let leg1Time= data.routes[0].legs[0].duration.value;
 			let leg2Time= data.routes[0].legs[1].duration.value;
 			legTimesToDisplay(leg1Human,leg2Human,trip);
-		return leg1Time + leg2Time;
+		return moment.duration(leg1Time + leg2Time, "seconds").humanize();
 		};
 
 		//displays data to user - impure - add detail about your errands like which one.
 		const displayData = (totalDuration) => {
-			$('#results').append('<p> The total duration of your trip from ' + trip.origin  + ' to your errand ' + trip.errand + ' and back  is ' + totalDuration + 'seconds.</p>' +'<p>From ' + trip.origin + ' to ' + trip.errand + ' will take ' + trip.legTimes[0] + '.</p><p> From ' + trip.errand + ' back to ' + trip.origin + ' will take ' + trip.legTimes[1] + '.</p>');
+			$('#results').append('<p> The total duration of your trip from ' + trip.origin  + ' to your errand ' + trip.errand + ' and back  is about ' + totalDuration +'.</p>' +'<p>From ' + trip.origin + ' to ' + trip.errand + ' will take ' + trip.legTimes[0] + '.</p><p> From ' + trip.errand + ' back to ' + trip.origin + ' will take ' + trip.legTimes[1] + '.</p>');
 		}
