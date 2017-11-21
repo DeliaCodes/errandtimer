@@ -72,5 +72,9 @@ const tripAddressesToDisplay = (start,errand1,trip) => {
 
 		//displays data to user - impure - add detail about your errands like which one.
 		const displayData = (totalDuration) => {
-			$('#results').append('<p> The total duration of your trip from ' + trip.origin  + ' to your errand ' + trip.errand + ' and back  is about ' + totalDuration +'.</p>' +'<p>From ' + trip.origin + ' to ' + trip.errand + ' will take ' + trip.legTimes[0] + '.</p><p> From ' + trip.errand + ' back to ' + trip.origin + ' will take ' + trip.legTimes[1] + '.</p>');
+      $('#results').append('<p> The total duration of your trip from ' + trip.origin  + ' to your errand ' + trip.errand + ' and back  is about ' + totalDuration +'.</p>')
+      
+      $('#results').append('<p>From ' + trip.origin + ' to ' + trip.errand + ' will take ' + trip.legTimes[0] + '.</p>')
+      
+      $('#results').append('<p> From ' + trip.errand + ' back to ' + trip.origin + ' will take ' + trip.legTimes[1] + '.</p>');
 		}
