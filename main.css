@@ -8,8 +8,15 @@ body {
   height: 100%;
   background-color: #cad2f7;
   font-family: 'Istok Web', sans-serif;
+  display: flex;
 }
 
 main {
   color: #16405b;
+}
+
+@media only screen and (min-width: 640px) {
+  body {
+    justify-content: center;
+  }
 }
