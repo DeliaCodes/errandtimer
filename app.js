@@ -55,7 +55,7 @@ const legTimesToDisplay = (leg1, leg2, trip) => {
 };
 
 
-// process data function - to do - loop through the data object and add map + reduce, map get all the legs.duration and then filter. instead of process use the value
+// process data function - gets data, humanizes it, sends it to display
 const processData = (data) => {
   // console.log(data);
   const leg1Human = data.routes[0].legs[0].duration.text;
