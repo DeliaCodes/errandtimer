@@ -1,1 +1,15 @@
 * {}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-color: #cad2f7;
+  font-family: 'Istok Web', sans-serif;
+}
+
+main {
+  color: #16405b;
+}
