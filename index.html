@@ -10,28 +10,24 @@
 
 <body>
 	<div id="container">
-		<h1>How Long Will It Take To Run My Errand And Come Back?</h1>
-		<h3>Place your starting and errand address below to get how long it will take to travel there and back.</h3>
+		<header>
+			<h1>How Long Will It Take To Run My Errand And Come Back?</h1>
+			<h3>Place your starting and errand address below to get how long it will take to travel there and back.</h3>
+		</header>
 		<main role="main">
 
 			<form id="errandForm">
-				<div class="row">
-					<div class="column">
-						<label for="start">Starting Address</label>
-						<input id="start" type="text" name="enter starting address">
-					</div>
-					<div class="column">
-						<label for="errand1">Errand Address</label>
-						<input id="errand1" type="text" name="enter errand address">
-					</div>
-					<label for="startTime"></label>
-					<input id="submit" type="submit" value="submit">
-				</div>
-			</form>
-			<div class="row">
-				<div id="results">
+				<label for="start">Starting Address</label>
+				<input id="start" type="text" name="enter starting address">
 
-				</div>
+				<label for="errand1">Errand Address</label>
+				<input id="errand1" type="text" name="enter errand address">
+
+				<label for="startTime"></label>
+				<input id="submit" type="submit" value="submit">
+			</form>
+			<div id="results">
+
 			</div>
 
 			<!--<div id="feedbackLink">
@@ -40,11 +36,11 @@
 	</div>
 	</main>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script src="src/base64.js"></script>
-	<script src="src/feedback.js"></script>
+	<script src="feedbackBot-master/src/base64.js"></script>
+	<script src="feedbackBot-master/src/feedback.js"></script>
 	<script type="text/javascript">
 		$.feedback({
-			html2canvasURL: 'src/html2canvas.js',
+			html2canvasURL: 'feedbackBot-master/src/html2canvas.js',
 			githubpath: 'deliacodes/errandtimer',
 			serverURL: 'http://feedbackbot.herokuapp.com'
 		});

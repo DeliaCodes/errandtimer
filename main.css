@@ -10,48 +10,39 @@ body {
   height: 100%;
 }
 
-.container {
-  height: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+#container {
   display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  flex-direction: column;
 }
 
-h1 {
+#container h1 {
   text-align: center;
 }
 
-h3 {
+#container h3 {
   margin: 0 auto;
   text-align: center;
   padding-bottom: 1em;
 }
 
-input {
-  justify-content: flex-start;
-}
-
-main {
+#container main {
   color: #16405b;
   margin: 0 auto;
 }
 
-.row {
+#errandForm {
+  flex-direction: row;
   display: flex;
-  flex-direction: column;
+  flex-flow: wrap;
 }
 
-.column {
-  flex-basis: 100%;
-}
 
-@media screen and (min-width: 800px) {
-  .column {
-    flex: 1;
-  }
-  .row {
+/*@media screen and (max-width: 800px) {
+  #errandForm {
     align-items: center;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
   }
 }
