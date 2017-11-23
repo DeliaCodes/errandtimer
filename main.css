@@ -5,18 +5,53 @@ html {
 }
 
 body {
-  height: 100%;
   background-color: #cad2f7;
   font-family: 'Istok Web', sans-serif;
+  height: 100%;
+}
+
+.container {
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
+}
+
+h1 {
+  text-align: center;
+}
+
+h3 {
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 1em;
+}
+
+input {
+  justify-content: flex-start;
 }
 
 main {
   color: #16405b;
+  margin: 0 auto;
 }
 
-@media only screen and (min-width: 640px) {
-  body {
-    justify-content: center;
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  flex-basis: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .column {
+    flex: 1;
+  }
+  .row {
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
 }

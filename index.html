@@ -5,28 +5,50 @@
 	<title>Errand Timer</title>
 	<link href="https://fonts.googleapis.com/css?family=Istok+Web" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="main.css">
+	<link rel="stylesheet" href="src/feedback.css" />
 </head>
 
 <body>
-	<h1>How Long Will It Take To Run My Errand And Come Back?</h1>
-	<h3>Place your starting and errand address below.</h3>
-	<main role="main">
-		<form id="errandForm">
-			<label for="start">Start</label>
-			<input id="start" type="text" name="enter starting address">
-			<label for="errand1">Errand</label>
-			<input id="errand1" type="text" name="enter errand address">
-			<label for="startTime"></label>
-			<input id="submit" type="submit" value="submit">
-		</form>
-		<div id="results">
+	<div id="container">
+		<h1>How Long Will It Take To Run My Errand And Come Back?</h1>
+		<h3>Place your starting and errand address below to get how long it will take to travel there and back.</h3>
+		<main role="main">
 
-		</div>
-		<div id="feedbackLink">
-			<a href="https://goo.gl/forms/BCaZupJmsls7Wv3b2">If you'd like to leave feedback, click here</a>
-		</div>
+			<form id="errandForm">
+				<div class="row">
+					<div class="column">
+						<label for="start">Starting Address</label>
+						<input id="start" type="text" name="enter starting address">
+					</div>
+					<div class="column">
+						<label for="errand1">Errand Address</label>
+						<input id="errand1" type="text" name="enter errand address">
+					</div>
+					<label for="startTime"></label>
+					<input id="submit" type="submit" value="submit">
+				</div>
+			</form>
+			<div class="row">
+				<div id="results">
+
+				</div>
+			</div>
+
+			<!--<div id="feedbackLink">
+				<button class="feedback-btn feedback-btn-blue">Feedback</button>
+			</div>-->
+	</div>
 	</main>
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="src/base64.js"></script>
+	<script src="src/feedback.js"></script>
+	<script type="text/javascript">
+		$.feedback({
+			html2canvasURL: 'src/html2canvas.js',
+			githubpath: 'deliacodes/errandtimer',
+			serverURL: 'http://feedbackbot.herokuapp.com'
+		});
+	</script>
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment@2.19.2/moment.min.js"></script>
 	<script type="text/javascript" src="app.js"></script>
 	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCndF3UNkH3RVb1fW8S65GmGDyHIso4uB0&callback=initMap">
