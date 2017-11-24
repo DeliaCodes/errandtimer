@@ -12,8 +12,9 @@ body {
 
 #container {
   display: flex;
+  align-items: center;
   flex-direction: column;
-  justify-content: center;
+  height: 100%;
 }
 
 #container h1 {
@@ -31,33 +32,40 @@ body {
   margin: 0 auto;
 }
 
-#errandForm {
-  flex-direction: row;
-  display: flex;
-  min-width: 100%;
-  align-items: center;
-  justify-content: space-around;
-}
-
 #startLabel {
-  flex: 1 0 130px;
-  max-width: 220px;
+  /* flex: 1 0 130px;
+  max-width: 220px;*/
 }
 
 #errandLabel {
-  flex: 1 0 120px;
+  /*flex: 1 0 120px;*/
 }
 
 #errandForm input {
-  flex: 1 0 220px;
+  /*flex: 1 0 220px;*/
   border-radius: 1em;
   margin-right: 2em;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (min-width: 800px) {
   #errandForm {
-    align-items: center;
+    flex-direction: row;
     flex-wrap: wrap;
-    flex-direction: column;
+    display: flex;
+    min-width: 100%;
+    justify-content: space-around;
   }
+}
+
+#errandForm {
+  flex-direction: column;
+  flex-wrap: wrap;
+  display: flex;
+  min-width: 100%;
+  align-items: space-around;
+  justify-content: space-around;
+}
+
+#errandForm * {
+  margin-top: 1em;
 }
