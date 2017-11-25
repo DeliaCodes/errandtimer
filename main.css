@@ -8,6 +8,7 @@ body {
   background-color: #cad2f7;
   font-family: 'Istok Web', sans-serif;
   height: 100%;
+  display: flex;
 }
 
 #container {
@@ -30,6 +31,8 @@ body {
 #container main {
   color: #16405b;
   margin: 0 auto;
+  box-sizing: border-box;
+  min-width: 100%;
 }
 
 #startLabel {
@@ -41,36 +44,46 @@ body {
   /*flex: 1 0 120px;*/
 }
 
-#errandForm input {
-  /*flex: 1 0 220px;*/
+.errandForm input {
+  /*flex: 1 0 220px;
   border-radius: 1em;
-  margin-right: 2em;
+  margin-right: 2em;*/
 }
 
 #submit {
-  max-width: 10em;
-  margin-left: 6em;
+  /* max-width: 10em;
+  margin-left: 6em;*/
 }
 
-@media only screen and (min-width: 800px) {
-  #errandForm {
-    flex-direction: row;
-    flex-wrap: wrap;
-    display: flex;
-    min-width: 100%;
-    justify-content: space-around;
-  }
+fieldset {
+  display: flex;
 }
 
-#errandForm {
+.errandForm {
   flex-direction: column;
   flex-wrap: wrap;
   display: flex;
   min-width: 100%;
   align-items: space-around;
   justify-content: space-around;
+  width: 100%;
 }
 
-#errandForm * {
-  margin-top: 1em;
+@media only screen and (min-width: 800px) {
+  .errandForm {
+    flex-direction: row;
+    display: flex;
+  }
+  fieldset * {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 1em;
+    height: 1em;
+  }
+}
+
+.errandForm * {
+  /*margin-top: 1em;*/
 }

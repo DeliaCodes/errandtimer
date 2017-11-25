@@ -1,0 +1,16 @@
+
+form {
+	display: flex;
+}
+
+fieldset {
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+@media (min-width: 800px) {
+fieldset {
+		flex-direction: row;
+	}
+}
+
