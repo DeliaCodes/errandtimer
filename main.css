@@ -64,7 +64,6 @@ fieldset {
   flex-wrap: wrap;
   display: flex;
   min-width: 100%;
-  align-items: space-around;
   justify-content: space-around;
   width: 100%;
 }
@@ -79,8 +78,6 @@ fieldset {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    width: 1em;
-    height: 1em;
   }
 }
 
