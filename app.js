@@ -68,9 +68,9 @@ const processData = (data) => {
 
 // displays data to user - impure - add detail about your errands like which one.
 const displayData = (totalDuration) => {
-  $('#results').append(`<p> The total duration of your trip from ${trip.origin} to your errand ${trip.errand} and back  is about ${totalDuration}.</p>`);
+  $('#results').append(`<ul><li>The total duration of your trip from <em>${trip.origin}</em> to your errand <em>${trip.errand}</em> and back  is about <strong> ${totalDuration}</strong>.</li></ul>`);
 
-  $('#results').append(`<p>From ${trip.origin} to ${trip.errand} will take ${trip.legTimes[0]}.</p>`);
+  $('#results').append(`<ul><li>From <em>${trip.origin}</em> to <em>${trip.errand}</em> will take about <strong>${trip.legTimes[0]}</strong>.</li></ul>`);
 
-  $('#results').append(`<p> From ${trip.errand} back to ${trip.origin} will take ${trip.legTimes[1]}.</p>`);
+  $('#results').append(`<ul><li> From <em>${trip.errand}</em> back to <em>${trip.origin}</em> will take about <strong>${trip.legTimes[1]}</strong>.</li></ul>`);
 };
