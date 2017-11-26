@@ -6,6 +6,8 @@ A way to time how long it would take you to run an errand and get back home. Fee
 
 Feedback so far:
 
+Session 1
+
 * Bold the result "time" so it stands out. [Done!]
 
 * Automatically capitalize and standardize the text input
@@ -17,3 +19,16 @@ Feedback so far:
 * Add preview image of the route.
 
 * Add link to google maps query for each place.
+
+Session 2
+
+* Add an error alert if what you entered is an invalid address
+
+* Add a user query if an addrress has multiple matches
+
+* Add a reset option to clear previous queries
+
+Session 3
+
+* Better explanation as to what to do // I'm not sure what to do with this
+
