@@ -1,59 +1,12 @@
+/* global $, moment */
+
 const trip = {};
-
-// starts the process - impure d/t jquery
-function initMap() {
-  $(getInput);
-}
-const tripAddressesToDisplay = (start, errand1, trip) => {
-  trip.origin = start;
-  trip.errand = errand1;
-};
-
-// gets input from user - impure
-const getInput = () => {
-  $('#errandForm').submit((event) => {
-    event.preventDefault();
-    const errand1 = $('#errand1').val();
-    const start = $('#start').val();
-    tripAddressesToDisplay(start, errand1, trip);
-    route(start, addErrand(errand1));
-  });
-};
-
-// adds errand to to object - pure
-const addErrand = input => [{
-  location: input,
-}];
-
-// makes the route request - impure d/t the google maps
-function route(start, errand1) {
-  const request = {
-    origin: start,
-    destination: start,
-    waypoints: errand1,
-    optimizeWaypoints: true,
-    travelMode: 'DRIVING',
-  };
-  // does this need to be here? or can this be broken out?
-  const directionsService = new google.maps.DirectionsService();
-  directionsService.route(request, callBack);
-}
-
-// success of response execution - impure
-function callBack(response, status) {
-  if (status === 'OK') {
-    // console.log(response);
-    const totalDuration = processData(response);
-    displayData(totalDuration);
-  }
-}
 
 // adds times for each leg to the trip object
 const legTimesToDisplay = (leg1, leg2, trip) => {
   trip.legTimes = [leg1, leg2];
   // console.log (trip);
 };
-
 
 // process data function - gets data, humanizes it, sends it to display
 const processData = (data) => {
@@ -74,3 +27,51 @@ const displayData = (totalDuration) => {
 
   $('#results').append(`<ul><li> From <em>${trip.errand}</em> back to <em>${trip.origin}</em> will take about <strong>${trip.legTimes[1]}</strong>.</li></ul>`);
 };
+
+// success of response execution - impure
+function callBack(response, status) {
+  if (status === 'OK') {
+    // console.log(response);
+    const totalDuration = processData(response);
+    displayData(totalDuration);
+  }
+}
+
+// makes the route request - impure d/t the google maps
+function route(start, errand1) {
+  const request = {
+    origin: start,
+    destination: start,
+    waypoints: errand1,
+    optimizeWaypoints: true,
+    travelMode: 'DRIVING',
+  };
+  const directionsService = new google.maps.DirectionsService();
+  directionsService.route(request, callBack);
+}
+
+// adds errand to to object - pure
+const addErrand = input => [{
+  location: input,
+}];
+
+const tripAddressesToDisplay = (start, errand1, trip) => {
+  trip.origin = start;
+  trip.errand = errand1;
+};
+
+// gets input from user - impure
+const getInput = () => {
+  $('#errandForm').submit((event) => {
+    event.preventDefault();
+    const errand1 = $('#errand1').val();
+    const start = $('#start').val();
+    tripAddressesToDisplay(start, errand1, trip);
+    route(start, addErrand(errand1));
+  });
+};
+
+// starts the process - impure d/t jquery
+function initMap() {
+  $(getInput);
+}
