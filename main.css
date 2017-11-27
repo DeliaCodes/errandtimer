@@ -32,11 +32,6 @@ body {
   margin: 0 auto;
 }
 
-#startLabel {
-  /* 
-  max-width: 220px;*/
-}
-
 #errandForm input {
   border-radius: 1em;
   margin-right: 2em;
@@ -75,8 +70,3 @@ body {
     min-width: 7em;
   }
 }
-
-
-/*#errandForm {
-  min-width: 100%;
-}*/
