@@ -32,3 +32,11 @@ Session 3
 
 * Better explanation as to what to do // I'm not sure what to do with this
 
+Session 4
+
+* instead of address say street address
+
+* entered in two addresses and it gave me the wrong time - perhaps offer some options if there are multiple results
+
+* add option to select walking instead of driving
+
