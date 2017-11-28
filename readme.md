@@ -1,8 +1,12 @@
-#readme
+# readme
 
-https://deliacodes.github.io/errandtimer/
+<https://deliacodes.github.io/errandtimer/>
 
-A way to time how long it would take you to run an errand and get back home. Feedback welcome!
+A way to time how long it would take you to run an errand and get back home.
+
+Technologies used are HTML, CSS, Javascript, and Jquery.
+
+Feedback welcome!
 
 Feedback so far:
 
@@ -39,4 +43,3 @@ Session 4
 * entered in two addresses and it gave me the wrong time - perhaps offer some options if there are multiple results
 
 * add option to select walking instead of driving
-
