@@ -1,44 +1,33 @@
-/* global $, moment */
+/* global $, moment, google */
 
-const trip = {};
-
-// adds times for each leg to the trip object
-const legTimesToDisplay = (leg1, leg2, trip) => {
-  trip.legTimes = [leg1, leg2];
-  // console.log (trip);
-};
-
-// process data function - gets data, humanizes it, sends it to display
-const processData = (data) => {
-  // console.log(data);
-  const leg1Human = data.routes[0].legs[0].duration.text;
-  const leg2Human = data.routes[0].legs[1].duration.text;
-  const leg1Time = data.routes[0].legs[0].duration.value;
-  const leg2Time = data.routes[0].legs[1].duration.value;
-  legTimesToDisplay(leg1Human, leg2Human, trip);
-  return moment.duration(leg1Time + leg2Time, 'seconds').humanize();
-};
 
 // displays data to user - impure - add detail about your errands like which one.
-const displayData = (totalDuration) => {
-  $('#results').append(`<ul><li>The total duration of your trip from <em>${trip.origin}</em> to your errand <em>${trip.errand}</em> and back  is about <strong> ${totalDuration}</strong>.</li></ul>`);
+const displayData = (totalDuration, leg1, leg2, start, errand1) => {
+  $('#results').append(`<ul><li>The total duration of your trip from <em>${start}</em> to your errand <em>${errand1}</em> and back  is about <strong> ${totalDuration}</strong>.</li></ul>`);
 
-  $('#results').append(`<ul><li>From <em>${trip.origin}</em> to <em>${trip.errand}</em> will take about <strong>${trip.legTimes[0]}</strong>.</li></ul>`);
+  $('#results').append(`<ul><li>From <em>${start}</em> to <em>${errand1}</em> will take about <strong>${leg1}</strong>.</li></ul>`);
 
-  $('#results').append(`<ul><li> From <em>${trip.errand}</em> back to <em>${trip.origin}</em> will take about <strong>${trip.legTimes[1]}</strong>.</li></ul>`);
+  $('#results').append(`<ul><li> From <em>${start}</em> back to <em>${errand1}</em> will take about <strong>${leg2}</strong>.</li></ul>`);
 };
 
+// breaks down data, calls legtimes, humanizes total duration, sends it to display
+const processData = (data, start, errand1) => {
+  const leg1 = data.routes[0].legs[0].duration.text;
+  const leg2 = data.routes[0].legs[1].duration.text;
+  const leg1InSeconds = data.routes[0].legs[0].duration.value;
+  const leg2InSeconds = data.routes[0].legs[1].duration.value;
+  const totalDuration = moment.duration(leg1InSeconds + leg2InSeconds, 'seconds').humanize();
+  displayData(totalDuration, leg1, leg2, start, errand1);
+};
+
+
 // success of response execution - impure
-function callBack(response, status) {
+function callBack(response, status, start, errand1) {
   if (status === 'OK') {
-    // console.log(response);
-    const totalDuration = processData(response);
-    displayData(totalDuration);
+    processData(response, start, errand1);
   }
 }
-
-// makes the route request - impure d/t the google maps
-function route(start, errand1) {
+const route = (start, errand1) => {
   const request = {
     origin: start,
     destination: start,
@@ -47,31 +36,32 @@ function route(start, errand1) {
     travelMode: 'DRIVING',
   };
   const directionsService = new google.maps.DirectionsService();
-  directionsService.route(request, callBack);
-}
+  directionsService.route(request, callBack(errand1, start));
+};
 
-// adds errand to to object - pure
+// makes the route request  of google maps- impure d/t the google maps
+const createMapsRequest = (start, errand1) => {
+  route(start, errand1);
+};
+// adds errand to the object - pure
 const addErrand = input => [{
   location: input,
 }];
 
-const tripAddressesToDisplay = (start, errand1, trip) => {
-  trip.origin = start;
-  trip.errand = errand1;
-};
 
 // gets input from user - impure
+// curry
 const getInput = () => {
   $('#errandForm').submit((event) => {
     event.preventDefault();
     const errand1 = $('#errand1').val();
     const start = $('#start').val();
-    tripAddressesToDisplay(start, errand1, trip);
-    route(start, addErrand(errand1));
+    createMapsRequest(start, addErrand(errand1));
   });
 };
 
-// starts the process - impure d/t jquery
+// starts the process- impure d/t jquery
+// eslint-disable-next-line no-unused-vars
 function initMap() {
   $(getInput);
 }
