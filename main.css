@@ -57,13 +57,20 @@ body {
 
 @media only screen and (max-height: 649px) {
   #container h1 {
-    font-size: 2.5vw;
+    font-size: 1.5vw;
   }
   #container h3 {
-    font-size: 2vw;
+    font-size: 1vw;
   }
   .responsive * {
-    font-size: 1.75vw;
+    font-size: 0.75vw;
+  }
+  .responsive {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  #errandForm {
+    display: block;
   }
 }
 
@@ -74,9 +81,6 @@ body {
     display: flex;
   }
   #submit {
-    max-height: 25px;
-    margin-left: 1em;
-    margin-top: 2em;
     min-width: 7em;
   }
 }
