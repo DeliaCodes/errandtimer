@@ -39,7 +39,7 @@ const callback = (response, status) => {
     const totalDuration = processData(response);
     displayData(totalDuration);
   }
-}
+};
 
 // makes the route request  of google maps- impure d/t the google maps
 const route = (start, errand1) => {
@@ -52,7 +52,7 @@ const route = (start, errand1) => {
   };
   const directionsService = new google.maps.DirectionsService();
   directionsService.route(request, callback);
-}
+};
 
 // adds errand to the object - pure
 const addErrand = input => [{
