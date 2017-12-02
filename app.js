@@ -42,7 +42,7 @@ function callBack(response, status) {
 }
 
 // makes the route request  of google maps- impure d/t the google maps
-function route(start, errand1) {
+const route = (start, errand1) => {
   const request = {
     origin: start,
     destination: start,
