@@ -79,4 +79,7 @@ const getInput = () => {
 };
 
 // starts the process- impure d/t jquery
-const initMap = () => $(getInput);
+// eslint-disable-next-line no-unused-vars
+function initMap() {
+  $(getInput);
+}
