@@ -1,13 +1,18 @@
-const app = require('./aap-prev')
+// const app = require('./aap-prev')
 
-describe('processData', () => {
-  it('calculates duration of', () => {
-    const route1 = app.route('7522 N Lombard St Portland OR',
-      '1315 Fern St New Orleans LA')
-    shouldEqual(route1.totalDuration);
+describe('route', () => {
+  it('status is okay', (done) => {
+    route(
+      '7522 N Lombard St Portland OR',
+      addErrand('1315 Fern St New Orleans LA'),
+      (response, status) => {
+        try {
+          expect(status).to.eql('OK');
+          done();
+        } catch (e) {
+          done(e);
+        }
+      },
+    );
   });
 });
-
-
-/* route('7522 N Lombard St Portland OR',
-  '1315 Fern St New Orleans LA', response => callback()); */
