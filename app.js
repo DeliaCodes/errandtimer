@@ -34,7 +34,7 @@ const displayData = (totalDuration) => {
 
 
 // success of response execution - impure
-const callBack = (response, status) => {
+const callback = (response, status) => {
   if (status === 'OK') {
     const totalDuration = processData(response);
     displayData(totalDuration);
@@ -51,7 +51,7 @@ const route = (start, errand1) => {
     travelMode: 'DRIVING',
   };
   const directionsService = new google.maps.DirectionsService();
-  directionsService.route(request, callBack);
+  directionsService.route(request, callback);
 }
 
 // adds errand to the object - pure
