@@ -79,6 +79,4 @@ const getInput = () => {
 };
 
 // starts the process- impure d/t jquery
-function initMap() {
-  $(getInput);
-}
+const initMap = () => $(getInput);
