@@ -34,7 +34,7 @@ const displayData = (totalDuration) => {
 
 
 // success of response execution - impure
-function callBack(response, status) {
+const callBack = (response, status) => {
   if (status === 'OK') {
     const totalDuration = processData(response);
     displayData(totalDuration);
