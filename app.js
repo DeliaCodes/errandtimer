@@ -54,6 +54,10 @@ const route = (start, errand1) => {
   directionsService.route(request, callback);
 };
 
+const createMapsRequest = (start, errand1) => {
+  route(start, errand1);
+};
+
 // adds errand to the object - pure
 const addErrand = input => [{
   location: input,
@@ -74,7 +78,7 @@ const getInput = () => {
     const errand1 = $('#errand1').val();
     const start = $('#start').val();
     tripAddressesToDisplay(start, errand1, trip);
-    route(start, addErrand(errand1));
+    createMapsRequest(start, addErrand(errand1));
   });
 };
 
