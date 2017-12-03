@@ -7,10 +7,10 @@ const trip = {};
 
 // adds times for each leg to the trip object
 // curry
-const legTimesToDisplay = (leg1, leg2, trip) => {
-  trip.legTimes = [leg1, leg2];
-  // console.log (trip);
-};
+// const legTimesToDisplay = (leg1, leg2, trip) => {
+// trip.legTimes = [leg1, leg2];
+// console.log (trip);
+// };
 
 // process data function - gets data, humanizes it, sends it to display
 const processData = (data) => {
@@ -18,26 +18,35 @@ const processData = (data) => {
   const leg2Human = data.routes[0].legs[1].duration.text;
   const leg1Time = data.routes[0].legs[0].duration.value;
   const leg2Time = data.routes[0].legs[1].duration.value;
-  legTimesToDisplay(leg1Human, leg2Human, trip);
-  return moment.duration(leg1Time + leg2Time, 'seconds').humanize();
+  // legTimesToDisplay(leg1Human, leg2Human, trip);
+  console.log('Processed!', leg1Human, leg2Human, leg1Time, leg2Time);
+  const totalDuration = moment.duration(leg1Time + leg2Time, 'seconds').humanize();
+  return displayWrapper({
+    totalDuration,
+    leg1Human,
+    leg2Human,
+  });
 };
 
 // displays data to user - impure - add detail about your errands like which one.
 // curry
-const displayData = (totalDuration) => {
-  $('#results').append(`<ul><li>The total duration of your trip from <em>${trip.origin}</em> to your errand <em>${trip.errand}</em> and back  is about <strong> ${totalDuration}</strong>.</li></ul>`);
+const displayWrapper = (start, errand1, totalDuration, leg1, leg2) => {
+  console.log('Wrappered!', )
+  const displayData = () => {
+    console.log('Displayed!', totalDuration, start, errand1, leg1, leg2);
+    $('#results').append(`<ul><li>The total duration of your trip from <em>${trip.origin}</em> to your errand <em>${trip.errand}</em> and back  is about <strong> ${totalDuration}</strong>.</li></ul>`);
 
-  $('#results').append(`<ul><li>From <em>${trip.origin}</em> to <em>${trip.errand}</em> will take about <strong>${trip.legTimes[0]}</strong>.</li></ul>`);
+    $('#results').append(`<ul><li>From <em>${trip.origin}</em> to <em>${trip.errand}</em> will take about <strong>${trip.legTimes[0]}</strong>.</li></ul>`);
 
-  $('#results').append(`<ul><li> From <em>${trip.errand}</em> back to <em>${trip.origin}</em> will take about <strong>${trip.legTimes[1]}</strong>.</li></ul>`);
+    $('#results').append(`<ul><li> From <em>${trip.errand}</em> back to <em>${trip.origin}</em> will take about <strong>${trip.legTimes[1]}</strong>.</li></ul>`);
+  };
 };
-
 
 // success of response execution - impure
 const callback = (response, status) => {
   if (status === 'OK') {
-    const totalDuration = processData(response);
-    displayData(totalDuration);
+    console.log('Calling!', response);
+    processData(response);
   }
 };
 
