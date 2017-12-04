@@ -1,5 +1,4 @@
 /* global $, moment, google, document */
-/* exported initMap */
 
 // clears results field, takes in data object
 const displayWrapper = (tripData) => {
@@ -73,12 +72,6 @@ const getInput = () => {
     createMapsRequest(start, addErrand(errand1));
   });
 };
-
-// starts the process- impure d/t jquery
-// eslint-disable-next-line no-unused-vars
-/* function initMap() {
-  $(getInput);
-} */
 
 // eslint-disable-next-line no-unused-vars
 function initAutocomplete() {
