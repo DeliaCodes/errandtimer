@@ -1,21 +1,9 @@
 /* global $, moment, google */
 /* exported initMap */
 
-// state object for the user query
-// const trip = {};
-
-// adds times for each leg to the trip object
-
-/* const legTimesToDisplay = (leg1, leg2, trip) => {
-// trip.legTimes = [leg1, leg2];
-// console.log (trip);
-}; */
 const displayWrapper = (tripData) => {
-  console.log('Wrappered!', tripData);
-  // $('#results').html('');
-  // console.log('Tripped!', trip);
+  $('#results').html('');
   const displayData = () => {
-    console.log('Displayed!', tripData);
     $('#results').append(`<ul><li>The total duration of your trip from <em>${tripData.origin}</em> to your errand <em>${tripData.errand}</em> and back  is about <strong> ${tripData.totalDuration}</strong>.</li></ul>`);
 
     $('#results').append(`<ul><li>From <em>${tripData.origin}</em> to <em>${tripData.errand}</em> will take about <strong>${tripData.leg1Human}</strong>.</li></ul>`);
@@ -33,8 +21,6 @@ const processData = (data) => {
   const leg2Time = data.routes[0].legs[1].duration.value;
   const origin = data.routes[0].legs[0].start_address;
   const errand = data.routes[0].legs[0].end_address;
-  // legTimesToDisplay(leg1Human, leg2Human, trip);
-  console.log('Processed!', leg1Human, leg2Human, leg1Time, leg2Time, origin, errand);
   const totalDuration = moment.duration(leg1Time + leg2Time, 'seconds').humanize();
   const tripData = {
     totalDuration,
@@ -46,13 +32,9 @@ const processData = (data) => {
   return displayWrapper(tripData);
 };
 
-// displays data to user - impure - add detail about your errands like which one.
-// curry
-
 // success of response execution - impure
 const callback = (response, status) => {
   if (status === 'OK') {
-    console.log('Calling!', response);
     processData(response);
   }
 };
@@ -79,21 +61,12 @@ const addErrand = input => [{
   location: input,
 }];
 
-// inserts the user addresses into the trip object
-// curry
-/* const tripAddressesToDisplay = (start, errand1, tripData) => {
-  tripData.origin = start;
-  tripData.errand = errand1;
-}; */
-
 // gets input from user - impure
-// curry
 const getInput = () => {
   $('#errandForm').submit((event) => {
     event.preventDefault();
     const errand1 = $('#errand1').val();
     const start = $('#start').val();
-    // tripAddressesToDisplay(start, errand1, trip);
     createMapsRequest(start, addErrand(errand1));
   });
 };
