@@ -63,7 +63,7 @@ const addErrand = input => [{
   location: input,
 }];
 
-// gets input from user - impure
+// gets the submitted input from user - impure d/t jquery
 const getInput = () => {
   $('#errandForm').submit((event) => {
     event.preventDefault();
@@ -73,6 +73,7 @@ const getInput = () => {
   });
 };
 
+// queries maps autocomplete when user enters input - impure d/t external query
 // eslint-disable-next-line no-unused-vars
 function initAutocomplete() {
   const inputOrigin = document.getElementById('start');
