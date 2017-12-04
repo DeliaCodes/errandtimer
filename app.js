@@ -1,4 +1,4 @@
-/* global $, moment, google */
+/* global $, moment, google, document */
 /* exported initMap */
 
 // clears results field, takes in data object
@@ -85,12 +85,8 @@ function initAutocomplete() {
   const inputOrigin = document.getElementById('start');
   const inputErrand = document.getElementById('errand1');
   const searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
-  searchBoxOrigin.addListener('places_changed', () => {
-    const placesOrigin = searchBoxOrigin.getPlaces();
-  });
+  searchBoxOrigin.addListener('places_changed', () => {});
   const searchBoxErrand = new google.maps.places.SearchBox(inputErrand);
-  searchBoxErrand.addListener('places_changed', () => {
-    const placesErrand = searchBoxErrand.getPlaces();
-  });
+  searchBoxErrand.addListener('places_changed', () => {});
   $(getInput);
 }
