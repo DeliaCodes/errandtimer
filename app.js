@@ -2,15 +2,28 @@
 /* exported initMap */
 
 // state object for the user query
-// curry
-const trip = {};
+// const trip = {};
 
 // adds times for each leg to the trip object
-// curry
-// const legTimesToDisplay = (leg1, leg2, trip) => {
+
+/* const legTimesToDisplay = (leg1, leg2, trip) => {
 // trip.legTimes = [leg1, leg2];
 // console.log (trip);
-// };
+}; */
+const displayWrapper = (tripData) => {
+  console.log('Wrappered!', tripData);
+  // $('#results').html('');
+  // console.log('Tripped!', trip);
+  const displayData = () => {
+    console.log('Displayed!', tripData);
+    $('#results').append(`<ul><li>The total duration of your trip from <em>${tripData.origin}</em> to your errand <em>${tripData.errand}</em> and back  is about <strong> ${tripData.totalDuration}</strong>.</li></ul>`);
+
+    $('#results').append(`<ul><li>From <em>${tripData.origin}</em> to <em>${tripData.errand}</em> will take about <strong>${tripData.leg1Human}</strong>.</li></ul>`);
+
+    $('#results').append(`<ul><li> From <em>${tripData.errand}</em> back to <em>${tripData.origin}</em> will take about <strong>${tripData.leg2Human}</strong>.</li></ul>`);
+  };
+  displayData();
+};
 
 // process data function - gets data, humanizes it, sends it to display
 const processData = (data) => {
@@ -18,29 +31,23 @@ const processData = (data) => {
   const leg2Human = data.routes[0].legs[1].duration.text;
   const leg1Time = data.routes[0].legs[0].duration.value;
   const leg2Time = data.routes[0].legs[1].duration.value;
+  const origin = data.routes[0].legs[0].start_address;
+  const errand = data.routes[0].legs[0].end_address;
   // legTimesToDisplay(leg1Human, leg2Human, trip);
-  console.log('Processed!', leg1Human, leg2Human, leg1Time, leg2Time);
+  console.log('Processed!', leg1Human, leg2Human, leg1Time, leg2Time, origin, errand);
   const totalDuration = moment.duration(leg1Time + leg2Time, 'seconds').humanize();
-  return displayWrapper({
+  const tripData = {
     totalDuration,
     leg1Human,
     leg2Human,
-  });
+    origin,
+    errand,
+  };
+  return displayWrapper(tripData);
 };
 
 // displays data to user - impure - add detail about your errands like which one.
 // curry
-const displayWrapper = (start, errand1, totalDuration, leg1, leg2) => {
-  console.log('Wrappered!', )
-  const displayData = () => {
-    console.log('Displayed!', totalDuration, start, errand1, leg1, leg2);
-    $('#results').append(`<ul><li>The total duration of your trip from <em>${trip.origin}</em> to your errand <em>${trip.errand}</em> and back  is about <strong> ${totalDuration}</strong>.</li></ul>`);
-
-    $('#results').append(`<ul><li>From <em>${trip.origin}</em> to <em>${trip.errand}</em> will take about <strong>${trip.legTimes[0]}</strong>.</li></ul>`);
-
-    $('#results').append(`<ul><li> From <em>${trip.errand}</em> back to <em>${trip.origin}</em> will take about <strong>${trip.legTimes[1]}</strong>.</li></ul>`);
-  };
-};
 
 // success of response execution - impure
 const callback = (response, status) => {
@@ -74,10 +81,10 @@ const addErrand = input => [{
 
 // inserts the user addresses into the trip object
 // curry
-const tripAddressesToDisplay = (start, errand1, tripData) => {
+/* const tripAddressesToDisplay = (start, errand1, tripData) => {
   tripData.origin = start;
   tripData.errand = errand1;
-};
+}; */
 
 // gets input from user - impure
 // curry
@@ -86,7 +93,7 @@ const getInput = () => {
     event.preventDefault();
     const errand1 = $('#errand1').val();
     const start = $('#start').val();
-    tripAddressesToDisplay(start, errand1, trip);
+    // tripAddressesToDisplay(start, errand1, trip);
     createMapsRequest(start, addErrand(errand1));
   });
 };
