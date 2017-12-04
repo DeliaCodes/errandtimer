@@ -65,8 +65,6 @@ body {
   display: flex;
 }
 
-#submit {}
-
 @media only screen and (orientation: portrait) {
   #errandForm {
     display: flex;
