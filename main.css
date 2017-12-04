@@ -17,10 +17,12 @@ body {
 
 #container h1 {
   text-align: center;
+  font-size: 1.5vw;
 }
 
 #container h3 {
   margin: 0 auto;
+  font-size: 1vw;
   text-align: center;
   padding-bottom: 1em;
 }
@@ -37,12 +39,15 @@ body {
 
 #submit {
   max-width: 20em;
-  margin-left: 9em;
 }
 
 .responsive {
   display: flex;
   flex-wrap: wrap;
+}
+
+.responsive * {
+  font-size: 0.75vw;
 }
 
 .responsive input {
@@ -55,32 +60,16 @@ body {
   max-width: 400px;
 }
 
-@media only screen and (max-height: 649px) {
-  #container h1 {
-    font-size: 1.5vw;
-  }
-  #container h3 {
-    font-size: 1vw;
-  }
-  .responsive * {
-    font-size: 0.75vw;
-  }
-  .responsive {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  #errandForm {
-    display: block;
-  }
+#errandForm {
+  flex-direction: row;
+  display: flex;
 }
 
-@media only screen and (min-width: 650px) {
+#submit {}
+
+@media only screen and (orientation: portrait) {
   #errandForm {
-    flex-direction: row;
-    flex-wrap: wrap;
     display: flex;
-  }
-  #submit {
-    min-width: 7em;
+    flex-direction: column;
   }
 }

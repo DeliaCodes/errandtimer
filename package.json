@@ -1,0 +1,31 @@
+{
+  "name": "errandtimer",
+  "version": "1.0.0",
+  "description": "https://deliacodes.github.io/errandtimer/",
+  "main": "app.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "dependencies": {
+    "babel-preset-env": "^1.6.1",
+    "eslint": "^4.11.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "jest": "^21.2.1"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DeliaCodes/errandtimer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DeliaCodes/errandtimer/issues"
+  },
+  "homepage": "https://github.com/DeliaCodes/errandtimer#readme"
+}
