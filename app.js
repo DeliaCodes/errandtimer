@@ -40,7 +40,7 @@ const callback = (response, status) => {
   }
 };
 
-// makes the route API request of google maps- impure d/t the google maps
+// calls the maps route API request- impure d/t the google maps
 const route = (start, errand1) => {
   const request = {
     origin: start,
@@ -51,11 +51,6 @@ const route = (start, errand1) => {
   };
   const directionsService = new google.maps.DirectionsService();
   directionsService.route(request, callback);
-};
-
-// calls the Maps route API request
-const createMapsRequest = (start, errand1) => {
-  route(start, errand1);
 };
 
 // adds errand to an object for passing to maps APU - pure
@@ -69,7 +64,7 @@ const getInput = () => {
     event.preventDefault();
     const errand1 = $('#errand1').val();
     const start = $('#start').val();
-    createMapsRequest(start, addErrand(errand1));
+    route(start, addErrand(errand1));
   });
 };
 
