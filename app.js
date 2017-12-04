@@ -1,8 +1,10 @@
 /* global $, moment, google */
 /* exported initMap */
 
+// clears results field, takes in data object
 const displayWrapper = (tripData) => {
   $('#results').html('');
+  // displays data to user
   const displayData = () => {
     $('#results').append(`<ul><li>The total duration of your trip from <em>${tripData.origin}</em> to your errand <em>${tripData.errand}</em> and back  is about <strong> ${tripData.totalDuration}</strong>.</li></ul>`);
 
@@ -32,14 +34,14 @@ const processData = (data) => {
   return displayWrapper(tripData);
 };
 
-// success of response execution - impure
+// callback for Maps API request, on success hands data to be processed - impure
 const callback = (response, status) => {
   if (status === 'OK') {
     processData(response);
   }
 };
 
-// makes the route request  of google maps- impure d/t the google maps
+// makes the route API request of google maps- impure d/t the google maps
 const route = (start, errand1) => {
   const request = {
     origin: start,
@@ -52,11 +54,12 @@ const route = (start, errand1) => {
   directionsService.route(request, callback);
 };
 
+// calls the Maps route API request
 const createMapsRequest = (start, errand1) => {
   route(start, errand1);
 };
 
-// adds errand to the object - pure
+// adds errand to an object for passing to maps APU - pure
 const addErrand = input => [{
   location: input,
 }];
