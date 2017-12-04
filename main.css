@@ -46,10 +46,6 @@ body {
   flex-wrap: wrap;
 }
 
-.responsive * {
-  font-size: 0.75vw;
-}
-
 .responsive input {
   flex-grow: 3;
   flex-basis: 200px;
