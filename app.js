@@ -5,11 +5,11 @@ const displayWrapper = (tripData) => {
   $('#results').html('');
   // displays data to user
   const displayData = () => {
-    $('#results').append(`<ul><li>The total duration of your trip from <em>${tripData.origin}</em> to your errand <em>${tripData.errand}</em> and back  is about <strong> ${tripData.totalDuration}</strong>.</li></ul>`);
+    $('#results').append(`<p>The total duration of your trip from <em>${tripData.origin}</em> to your errand <em>${tripData.errand}</em> and back  is about <strong> ${tripData.totalDuration}</strong>.</p>`);
 
-    $('#results').append(`<ul><li>From <em>${tripData.origin}</em> to <em>${tripData.errand}</em> will take about <strong>${tripData.leg1Human}</strong>.</li></ul>`);
+    $('#results').append(`<p>From <em>${tripData.origin}</em> to <em>${tripData.errand}</em> will take about <strong>${tripData.leg1Human}</strong>.</p>`);
 
-    $('#results').append(`<ul><li> From <em>${tripData.errand}</em> back to <em>${tripData.origin}</em> will take about <strong>${tripData.leg2Human}</strong>.</li></ul>`);
+    $('#results').append(`<p> From <em>${tripData.errand}</em> back to <em>${tripData.origin}</em> will take about <strong>${tripData.leg2Human}</strong>.</p>`);
   };
   displayData();
 };
@@ -34,14 +34,14 @@ const processData = (data) => {
 };
 
 // callback for Maps API request, on success hands data to be processed - impure
-const callback = (response, status) => {
+const routeDataProcess = (response, status) => {
   if (status === 'OK') {
     processData(response);
   }
 };
 
 // calls the maps route API request- impure d/t the google maps
-const route = (start, errand1) => {
+const route = (start, errand1, callback) => {
   const request = {
     origin: start,
     destination: start,
@@ -64,7 +64,7 @@ const getInput = () => {
     event.preventDefault();
     const errand1 = $('#errand1').val();
     const start = $('#start').val();
-    route(start, addErrand(errand1));
+    route(start, addErrand(errand1), routeDataProcess);
   });
 };
 
