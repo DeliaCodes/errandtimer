@@ -5,7 +5,7 @@ const displayWrapper = (tripData) => {
   $('#results').html('');
   // displays data to user
   const displayData = () => {
-    $('#results').append(`<p>Your errand will take about <strong>${tripData.leg1Human}</strong>. each way for a total time of about ${tripData.totalDuration}.</p>`);
+    $('#results').append(`<p>Each way of your errand will take about <strong>${tripData.leg1Human}</strong> for a total travel time of about ${tripData.totalDuration}.</p>`);
   };
   displayData();
 };
@@ -13,18 +13,12 @@ const displayWrapper = (tripData) => {
 // process data function - gets data, humanizes it, sends it to display
 const processData = (data) => {
   const leg1Human = data.routes[0].legs[0].duration.text;
-  const leg2Human = data.routes[0].legs[1].duration.text;
   const leg1Time = data.routes[0].legs[0].duration.value;
   const leg2Time = data.routes[0].legs[1].duration.value;
-  const origin = data.routes[0].legs[0].start_address;
-  const errand = data.routes[0].legs[0].end_address;
   const totalDuration = moment.duration(leg1Time + leg2Time, 'seconds').humanize();
   const tripData = {
     totalDuration,
     leg1Human,
-    leg2Human,
-    origin,
-    errand,
   };
   return displayWrapper(tripData);
 };
