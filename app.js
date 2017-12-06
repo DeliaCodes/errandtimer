@@ -5,11 +5,7 @@ const displayWrapper = (tripData) => {
   $('#results').html('');
   // displays data to user
   const displayData = () => {
-    $('#results').append(`<p>The total duration of your trip from <em>${tripData.origin}</em> to your errand <em>${tripData.errand}</em> and back  is about <strong> ${tripData.totalDuration}</strong>.</p>`);
-
-    $('#results').append(`<p>From <em>${tripData.origin}</em> to <em>${tripData.errand}</em> will take about <strong>${tripData.leg1Human}</strong>.</p>`);
-
-    $('#results').append(`<p> From <em>${tripData.errand}</em> back to <em>${tripData.origin}</em> will take about <strong>${tripData.leg2Human}</strong>.</p>`);
+    $('#results').append(`<p>Your errand will take about <strong>${tripData.leg1Human}</strong>. each way for a total time of about ${tripData.totalDuration}.</p>`);
   };
   displayData();
 };
