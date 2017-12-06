@@ -9,12 +9,12 @@
 
 <body>
 	<div id="container">
-		<header>
+		<header role="banner">
 			<h1>How Long Will It Take To Run My Errand And Come Back?</h1>
 			<h3>Place your starting and errand street addresses below to find out how long it will take to drive there and back.</h3>
 		</header>
 		<main role="main">
-			<form id="errandForm">
+			<form role="form" id="errandForm">
 				<div class="responsive">
 					<label id="startLabel" for="start">Starting Street Address:</label>
 					<input id="start" type="text" name="enter starting street address">
@@ -27,11 +27,12 @@
 					<input type="submit" value="submit">
 				</div>
 			</form>
-			<div id="results">
+			<div role="complementary" id="results" aria-label="Results Section of Page">
 
 			</div>
 
-			<a href="https://docs.google.com/forms/d/e/1FAIpQLScnocOtAQXZo1twfJRiG-xufMN9ivJki2fKsrQlsepeXe-R1g/viewform?usp=sf_link">Please click here to leave some feedback!</a>
+			<a href="https://docs.google.com/forms/d/e/1FAIpQLScnocOtAQXZo1twfJRiG-xufMN9ivJki2fKsrQlsepeXe-R1g/viewform?usp=sf_link"
+			  role="navigation" aria-label="Link to Feedback form">Please click here to leave some feedback!</a>
 	</div>
 	</main>
 	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
