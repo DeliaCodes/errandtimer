@@ -50,7 +50,6 @@ body {
   background: #112288;
   cursor: pointer;
   padding: 1em;
-  border-radius: 2em;
   margin-top: 1em
 }
 
@@ -74,12 +73,19 @@ body {
   display: flex;
 }
 
+#feedback {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: small;
+}
+
 @media only screen and (orientation: portrait) {
   #errandForm {
     display: flex;
     flex-direction: column;
   }
-  #submit {
+  .submit {
     max-width: 100%;
   }
 }
