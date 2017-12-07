@@ -2,7 +2,9 @@
 
 <https://deliacodes.github.io/errandtimer/>
 
-A way to time how long it would take you to run an errand and get back home.
+A simple application that takes in a starting address and a destination address and reports back how long it will take to drive each way.
+
+
 
 Technologies used are HTML, CSS, Javascript, and Jquery.
 
