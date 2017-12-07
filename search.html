@@ -15,15 +15,19 @@
 		</header>
 		<main role="main">
 			<form role="form" id="errandForm">
-				<div class="responsive">
-					<label id="startLabel" for="start">Starting Street Address:</label>
-					<input id="start" type="text" name="enter starting street address">
+				<div class="column">
+					<div class="row">
+						<div class="responsive">
+							<label id="startLabel" for="start">Starting Street Address:</label>
+							<input id="start" type="text" name="enter starting street address">
+						</div>
+						<div class="responsive">
+							<label id="errandLabel" for="errand1">Errand Street Address:</label>
+							<input id="errand1" type="text" name="enter errand street address">
+						</div>
+					</div>
+					<input class="submit" type="submit" value="Submit">
 				</div>
-				<div class="responsive">
-					<label id="errandLabel" for="errand1">Errand Street Address:</label>
-					<input id="errand1" type="text" name="enter errand street address">
-				</div>
-				<input class="responsive submit" type="submit" value="submit">
 			</form>
 			<div role="complementary" id="results" aria-label="Results Section of Page" aria-live="polite">
 
@@ -31,7 +35,7 @@
 
 		</main>
 		<a class="link" id="feedback" href="https://docs.google.com/forms/d/e/1FAIpQLScnocOtAQXZo1twfJRiG-xufMN9ivJki2fKsrQlsepeXe-R1g/viewform?usp=sf_link"
-		  role="navigation" aria-label="Link to Feedback form">Please click here to leave some feedback!</a>
+		  role="navigation" aria-label="Link to Feedback form">Feedback</a>
 	</div>
 
 

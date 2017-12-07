@@ -5,7 +5,7 @@ html {
 body {
   background-color: #cad2f7;
   font-family: 'Istok Web', sans-serif;
-  text-decoration-color: #16405b;
+  text-decoration-color: #5B3D91;
   height: 100%;
 }
 
@@ -29,7 +29,7 @@ body {
 }
 
 #container main {
-  color: #16405b;
+  color: #000000;
   margin: 0 auto;
 }
 
@@ -38,16 +38,15 @@ body {
 }
 
 .submit {
-  max-width: 20em;
   margin-top: auto;
   cursor: pointer;
-  background: #112288;
-  color: #F2DC79;
+  background: #5B3D91;
+  color: #ffffff;
 }
 
 .link {
-  color: #F2DC79;
-  background: #112288;
+  color: #ffffff;
+  background: #5B3D91;
   cursor: pointer;
   padding: 1em;
   margin-top: 1em
@@ -56,6 +55,16 @@ body {
 .responsive {
   display: flex;
   flex-wrap: wrap;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
 }
 
 .responsive input {
@@ -68,20 +77,15 @@ body {
   max-width: 400px;
 }
 
-#errandForm {
-  flex-direction: row;
-  display: flex;
-}
-
 #feedback {
   position: absolute;
   bottom: 0;
-  right: 0;
+  left: 0;
   font-size: small;
 }
 
 @media only screen and (orientation: portrait) {
-  #errandForm {
+  .row {
     display: flex;
     flex-direction: column;
   }
