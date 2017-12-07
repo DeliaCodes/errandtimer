@@ -5,6 +5,7 @@ html {
 body {
   background-color: #cad2f7;
   font-family: 'Istok Web', sans-serif;
+  text-decoration-color: #16405b;
   height: 100%;
 }
 
@@ -33,13 +34,24 @@ body {
 }
 
 #errandForm input {
-  border-radius: 0.5em;
-  margin-right: 2em;
+  box-sizing: border-box;
 }
 
 #submit {
   max-width: 20em;
-  align-items: flex-end;
+  margin-top: auto;
+  cursor: pointer;
+  background: #112288;
+  color: #F2DC79;
+}
+
+.link {
+  color: #F2DC79;
+  background: #112288;
+  cursor: pointer;
+  padding: 1em;
+  border-radius: 2em;
+  margin-top: 1em
 }
 
 .responsive {
@@ -62,9 +74,20 @@ body {
   display: flex;
 }
 
+#begin {
+  margin-top: 1em;
+}
+
+#feedback {
+  margin-top: 1em;
+}
+
 @media only screen and (orientation: portrait) {
   #errandForm {
     display: flex;
     flex-direction: column;
+  }
+  #submit {
+    max-width: 100%;
   }
 }
