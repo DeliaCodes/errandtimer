@@ -1,8 +1,10 @@
 # readme
 
+Errand Timer - a Thinkful API capstone.
+
 <https://deliacodes.github.io/errandtimer/>
 
-A simple application that takes in a starting and destination address and reports back how long it will take to drive each way.
+Errand Timer is a simple application that takes in a starting and destination address and reports back how long it will take to drive each way.
 
 !['Landing Page Screenshot'](https://github.com/DeliaCodes/errandtimer/blob/master/landing.PNG "Landing Page Screenshot")
 
