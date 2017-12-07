@@ -39,6 +39,7 @@ body {
 
 #submit {
   max-width: 20em;
+  align-items: flex-end;
 }
 
 .responsive {
