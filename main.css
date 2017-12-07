@@ -37,7 +37,7 @@ body {
   box-sizing: border-box;
 }
 
-#submit {
+.submit {
   max-width: 20em;
   margin-top: auto;
   cursor: pointer;
@@ -72,14 +72,6 @@ body {
 #errandForm {
   flex-direction: row;
   display: flex;
-}
-
-#begin {
-  margin-top: 1em;
-}
-
-#feedback {
-  margin-top: 1em;
 }
 
 @media only screen and (orientation: portrait) {
