@@ -2,46 +2,43 @@
 
 <https://deliacodes.github.io/errandtimer/>
 
-A simple application that takes in a starting address and a destination address and reports back how long it will take to drive each way.
+A simple application that takes in a starting and destination address and reports back how long it will take to drive each way.
 
 !['Landing Page Screenshot'](https://github.com/DeliaCodes/errandtimer/blob/master/landing.PNG "Landing Page Screenshot")
 
-Technologies used are HTML, CSS, Javascript, and Jquery.
+!['Search Page Screenshot'](https://github.com/DeliaCodes/errandtimer/blob/master/searchpage.PNG "Search Page Screenshot")
 
-Feedback welcome!
+!['Results Screenshot'](https://github.com/DeliaCodes/errandtimer/blob/master/searchresults.PNG "Results Screenshot")
+
+Technologies used are HTML, CSS, Javascript, and Jquery. Api's called: google maps - direction service and searchbox. Library's used: MomentJS.
+
+Feedback welcome! 
+Use the feedback link at the bottom left of the search page.
 
 Feedback so far:
 
-Session 1
+* Bold the result "time" so it stands out. [done]
 
-* Bold the result "time" so it stands out. [Done!]
-
-* Automatically capitalize and standardize the text input
+* Automatically capitalize and standardize the text input [done]
 
 * Make the "submit" button smaller? [Done!]
 
-* Clear results for each new inquiry? (prevent repeating of results)
+* Clear results for each new inquiry? (prevent repeating of results) [done]
 
 * Add preview image of the route.
 
 * Add link to google maps query for each place.
 
-Session 2
+* Add an error alert if what you entered is an invalid address [done]
 
-* Add an error alert if what you entered is an invalid address
+* Add a user query if an address has multiple matches [done]
 
-* Add a user query if an addrress has multiple matches
+* Add a reset option to clear previous queries [done - its automatic]
 
-* Add a reset option to clear previous queries
+* Better explanation as to what to do // I'm not sure what to do with this [done]
 
-Session 3
+* instead of address say street address [done]
 
-* Better explanation as to what to do // I'm not sure what to do with this
-
-Session 4
-
-* instead of address say street address
-
-* entered in two addresses and it gave me the wrong time - perhaps offer some options if there are multiple results
+* entered in two addresses and it gave me the wrong time - perhaps offer some options if there are multiple results [done]
 
 * add option to select walking instead of driving
