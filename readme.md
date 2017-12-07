@@ -4,7 +4,7 @@
 
 A simple application that takes in a starting address and a destination address and reports back how long it will take to drive each way.
 
-
+!['Landing Page Screenshot'](https://github.com/deliacodes/errandtimer/landing.PNG "Landing Page Screenshot")
 
 Technologies used are HTML, CSS, Javascript, and Jquery.
 
