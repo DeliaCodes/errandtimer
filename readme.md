@@ -10,7 +10,7 @@ A simple application that takes in a starting and destination address and report
 
 !['Results Screenshot'](https://github.com/DeliaCodes/errandtimer/blob/master/searchresults.PNG "Results Screenshot")
 
-Technologies used are HTML, CSS, Javascript, and Jquery. Api's called: google maps - direction service and searchbox. Library's used: MomentJS.
+Technologies used are HTML, CSS, Javascript, and Jquery. APIs called: Google Maps - direction service and searchbox. Library's used: MomentJS.
 
 Feedback welcome! 
 Use the feedback link at the bottom left of the search page.
