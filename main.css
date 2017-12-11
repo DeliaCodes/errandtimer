@@ -17,14 +17,12 @@ body {
 }
 
 #container h1 {
-  text-align: center;
   font-size: 1.5vw;
 }
 
 #container h3 {
   margin: 0 auto;
   font-size: 1vw;
-  text-align: center;
   padding-bottom: 1em;
 }
 
