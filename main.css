@@ -14,6 +14,7 @@ body {
   align-items: flex-start;
   flex-direction: column;
   height: 100%;
+  max-width: 12em;
 }
 
 #container h1 {
@@ -40,6 +41,7 @@ body {
   background: #5B3D91;
   color: #ffffff;
   margin-top: 1em;
+  margin-left: 5em;
 }
 
 .link {
@@ -55,10 +57,7 @@ body {
   flex-wrap: wrap;
 }
 
-.column {
-  display: flex;
-  flex-direction: column;
-}
+.column {}
 
 .row {
   display: flex;
