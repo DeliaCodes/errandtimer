@@ -9,11 +9,14 @@ body {
   height: 100%;
 }
 
+#map {
+  height: 100%;
+}
+
 #container {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  height: 100%;
   max-width: 12em;
 }
 
