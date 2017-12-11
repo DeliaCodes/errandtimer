@@ -13,27 +13,29 @@
 			<h1>How Long Will It Take To Run My Errand And Come Back?</h1>
 			<h3>Place your starting and errand street addresses below to find out how long it will take to drive there and back.</h3>
 		</header>
-		<main role="main">
-			<form role="form" id="errandForm">
-				<div class="column">
-					<div class="row">
-						<div class="responsive">
-							<label id="startLabel" for="start">Starting Street Address:</label>
-							<input id="start" type="text" name="enter starting street address">
+		<div>
+			<main role="main">
+				<form role="form" id="errandForm">
+					<div class="column">
+						<div class="row">
+							<div class="responsive">
+								<label id="startLabel" for="start">Starting Street Address:</label>
+								<input id="start" type="text" name="enter starting street address">
+							</div>
+							<div class="responsive">
+								<label id="errandLabel" for="errand1">Errand Street Address:</label>
+								<input id="errand1" type="text" name="enter errand street address">
+							</div>
 						</div>
-						<div class="responsive">
-							<label id="errandLabel" for="errand1">Errand Street Address:</label>
-							<input id="errand1" type="text" name="enter errand street address">
-						</div>
+						<input class="submit" type="submit" value="Submit">
 					</div>
-					<input class="submit" type="submit" value="Submit">
+				</form>
+				<div role="complementary" id="results" aria-label="Results Section of Page" aria-live="polite">
+
 				</div>
-			</form>
-			<div role="complementary" id="results" aria-label="Results Section of Page" aria-live="polite">
 
-			</div>
-
-		</main>
+			</main>
+		</div>
 		<a class="link" id="feedback" href="https://docs.google.com/forms/d/e/1FAIpQLScnocOtAQXZo1twfJRiG-xufMN9ivJki2fKsrQlsepeXe-R1g/viewform?usp=sf_link"
 		  role="navigation" aria-label="Link to Feedback form">Feedback</a>
 	</div>
