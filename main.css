@@ -7,6 +7,7 @@ body {
   font-family: 'Istok Web', sans-serif;
   text-decoration-color: #5B3D91;
   height: 100%;
+  display: flex;
 }
 
 #container {
