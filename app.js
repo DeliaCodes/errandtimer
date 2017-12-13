@@ -1,4 +1,4 @@
-/* global $, moment, google, document, map  */
+/* global $, moment, google, document, map,  */
 
 // clears results field, takes in data object
 const displayWrapper = (tripData) => {
@@ -43,8 +43,24 @@ const route = (start, errand1, callback) => {
   directionsService.route(request, callback);
 };
 
+const generateErrand = () => `<div class="responsive">
+<label id="errandLabel" for="errand">Errand Street Address:</label>
+<input class="errand" type="text" name="enter errand street address">
+</div>`;
+
+const renderErrand = () => {
+  const newErrand = generateErrand();
+  $('.row').append(newErrand);
+};
+
+const insertErrand = () => {
+  $('#addErrand').on('click', (event) => {
+    renderErrand();
+  });
+};
+
 // adds errand to an object for passing to maps APU - pure
-const addErrand = input => [{
+const convertErrand = input => [{
   location: input,
 }];
 
@@ -52,9 +68,10 @@ const addErrand = input => [{
 const getInput = () => {
   $('#errandForm').submit((event) => {
     event.preventDefault();
+    //add event in here
     const errand1 = $('#errand1').val();
     const start = $('#start').val();
-    route(start, addErrand(errand1), routeDataProcess);
+    route(start, convertErrand(errand1), routeDataProcess);
   });
 };
 
@@ -67,12 +84,6 @@ function initAutocomplete() {
   searchBoxOrigin.addListener('places_changed', () => {});
   const searchBoxErrand = new google.maps.places.SearchBox(inputErrand);
   searchBoxErrand.addListener('places_changed', () => {});
-  const map = new google.maps.Map(document.getElementById('map'), {
-    center: {
-      lat: -34.397,
-      lng: 150.644,
-    },
-    zoom: 8,
-  });
+
   $(getInput);
 }
