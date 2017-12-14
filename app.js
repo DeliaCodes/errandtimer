@@ -1,4 +1,8 @@
-/* global $, moment, google, document, map,  */
+/* global $, moment, google, document, map  */
+
+const state = {
+  errands: [],
+};
 
 // clears results field, takes in data object
 const displayWrapper = (tripData) => {
@@ -43,20 +47,25 @@ const route = (start, errand1, callback) => {
   directionsService.route(request, callback);
 };
 
+const addAutoComplete = (errand) => {
+  console.log(errand);
+  const searchBoxErrand = new google.maps.places.SearchBox(errand);
+  searchBoxErrand.addListener('places_changed', () => {});
+};
+
 const generateErrand = () => `<div class="responsive">
-<label id="errandLabel" for="errand">Errand Street Address:</label>
+<label id="errand" for="errand">Errand Street Address:</label>
 <input class="errand" type="text" name="enter errand street address">
 </div>`;
 
 const renderErrand = () => {
-  const newErrand = generateErrand();
+  const newErrand = $(generateErrand());
   $('.row').append(newErrand);
+  addAutoComplete(newErrand.find('input').get(0));
 };
 
 const insertErrand = () => {
-  $('#addErrand').on('click', (event) => {
-    renderErrand();
-  });
+  $('#addErrand').click(renderErrand);
 };
 
 // adds errand to an object for passing to maps APU - pure
@@ -68,9 +77,10 @@ const convertErrand = input => [{
 const getInput = () => {
   $('#errandForm').submit((event) => {
     event.preventDefault();
-    //add event in here
-    const errand1 = $('#errand1').val();
+    // add event in here
+    const errand1 = $('#errand0').val();
     const start = $('#start').val();
+    // . val will return an array when used with class
     route(start, convertErrand(errand1), routeDataProcess);
   });
 };
@@ -79,11 +89,11 @@ const getInput = () => {
 // eslint-disable-next-line no-unused-vars
 function initAutocomplete() {
   const inputOrigin = document.getElementById('start');
-  const inputErrand = document.getElementById('errand1');
+  const inputErrand = document.getElementById('errand0');
   const searchBoxOrigin = new google.maps.places.SearchBox(inputOrigin);
   searchBoxOrigin.addListener('places_changed', () => {});
   const searchBoxErrand = new google.maps.places.SearchBox(inputErrand);
   searchBoxErrand.addListener('places_changed', () => {});
-
+  insertErrand();
   $(getInput);
 }
