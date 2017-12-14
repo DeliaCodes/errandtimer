@@ -55,7 +55,7 @@ const addAutoComplete = (errand) => {
 
 const generateErrand = () => `<div class="responsive">
 <label id="errand" for="errand">Errand Street Address:</label>
-<input class="errand" type="text" name="enter errand street address">
+<input class="errands" type="text" name="enter errand street address">
 </div>`;
 
 const renderErrand = () => {
@@ -69,19 +69,20 @@ const insertErrand = () => {
 };
 
 // adds errand to an object for passing to maps APU - pure
-const convertErrand = input => [{
+// figure out how to add errands with errand 1 (or maybe)
+/* const convertErrand = input => [{
   location: input,
-}];
+}]; */
 
 // gets the submitted input from user - impure d/t jquery
 const getInput = () => {
   $('#errandForm').submit((event) => {
     event.preventDefault();
-    // add event in here
-    const errand1 = $('#errand0').val();
+    // const errand1 = $('#errand0').val();
     const start = $('#start').val();
-    // . val will return an array when used with class
-    route(start, convertErrand(errand1), routeDataProcess);
+    const errands = $('.errands').val();
+    console.log('errands!', errands);
+    route(start, /* convertErrand(errand1, errands), */ errands, routeDataProcess);
   });
 };
 
