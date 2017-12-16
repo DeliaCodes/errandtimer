@@ -11,7 +11,8 @@ const displayWrapper = (tripData) => {
   // displays data to user
   const displayData = () => {
     for (i = 0; i < state.displayTimes.length; i++) {
-      $('#results').append(`<p>This errand leg will take about <strong>${state.displayTimes[i]}</strong>.`);
+      const legCount = i + 1;
+      $('#results').append(`<p> Leg ${legCount} of your errands will take about <strong>${state.displayTimes[i]}</strong>.`);
     }
     $('#results').append(`<p> for a total travel time of about ${tripData.totalDuration}.</p>`)
   };
