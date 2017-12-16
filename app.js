@@ -1,4 +1,4 @@
-/* global $, moment, google, document, map  */
+/* global $, moment, google, document  */
 
 const state = {
   errands: [],
@@ -15,7 +15,12 @@ const displayWrapper = (tripData) => {
 };
 
 // process data function - gets data, humanizes it, sends it to display
+// use state.errands length to iterate through using map?
+// use filter to iterate through the object and get the duration text?
 const processData = (data) => {
+  const allLegs = data.routes[0].legs.map(itm => console.log('items!', itm.duration.text));
+
+
   const leg1Human = data.routes[0].legs[0].duration.text;
   const leg1Time = data.routes[0].legs[0].duration.value;
   const leg2Time = data.routes[0].legs[1].duration.value;
@@ -30,6 +35,7 @@ const processData = (data) => {
 // callback for Maps API request, on success hands data to be processed - impure
 const routeDataProcess = (response, status) => {
   if (status === 'OK') {
+    console.log('response!', response);
     processData(response);
   }
 };
@@ -84,7 +90,7 @@ const getInput = () => {
     $('.errands').each(function () {
       console.log('inner', $(this).val());
       state.errands.push({
-        location: $(this).val()
+        location: $(this).val(),
       });
     });
     console.log('errands!', state.errands);
