@@ -36,6 +36,7 @@ const routeDataProcess = (response, status) => {
 
 // calls the maps route API request- impure d/t the google maps
 const route = (start, errand1, callback) => {
+  console.log('route', errand1);
   const request = {
     origin: start,
     destination: start,
@@ -48,7 +49,7 @@ const route = (start, errand1, callback) => {
 };
 
 const addAutoComplete = (errand) => {
-  console.log(errand);
+  console.log('auto', errand);
   const searchBoxErrand = new google.maps.places.SearchBox(errand);
   searchBoxErrand.addListener('places_changed', () => {});
 };
@@ -80,11 +81,14 @@ const getInput = () => {
     event.preventDefault();
     // const errand1 = $('#errand0').val();
     const start = $('#start').val();
-    const errands = $('.errands').map(function () {
-      $(this).val();
+    $('.errands').each(function () {
+      console.log('inner', $(this).val());
+      state.errands.push({
+        location: $(this).val()
+      });
     });
-    console.log('errands!', errands);
-    route(start, /* convertErrand(errand1, errands), */ errands, routeDataProcess);
+    console.log('errands!', state.errands);
+    route(start, state.errands, /* errands, */ routeDataProcess);
   });
 };
 
