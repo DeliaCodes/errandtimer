@@ -80,7 +80,9 @@ const getInput = () => {
     event.preventDefault();
     // const errand1 = $('#errand0').val();
     const start = $('#start').val();
-    const errands = $('.errands').each().val();
+    const errands = $('.errands').map(function () {
+      $(this).val();
+    });
     console.log('errands!', errands);
     route(start, /* convertErrand(errand1, errands), */ errands, routeDataProcess);
   });
