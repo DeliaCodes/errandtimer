@@ -10,7 +10,10 @@ const displayWrapper = (tripData) => {
   $('#results').html('');
   // displays data to user
   const displayData = () => {
-    $('#results').append(`<p>Each way of your errand will take about <strong>${tripData.leg1Human}</strong> for a total travel time of about ${tripData.totalDuration}.</p>`);
+    for (i = 0; i < state.displayTimes.length; i++) {
+      $('#results').append(`<p>This errand leg will take about <strong>${state.displayTimes[i]}</strong>.`);
+    }
+    $('#results').append(`<p> for a total travel time of about ${tripData.totalDuration}.</p>`)
   };
   displayData();
 };
@@ -23,8 +26,6 @@ const processData = (data) => {
     state.displayTimes.push(itm.duration.text);
     console.log('items!', state.displayTimes);
   });
-
-
   const leg1Human = data.routes[0].legs[0].duration.text;
   const leg1Time = data.routes[0].legs[0].duration.value;
   const leg2Time = data.routes[0].legs[1].duration.value;
@@ -97,7 +98,7 @@ const getInput = () => {
         location: $(this).val(),
       });
     });
-    console.log('errands!', state.errands);
+    // console.log('errands!', state.errands);
     route(start, state.errands, routeDataProcess);
   });
 };
