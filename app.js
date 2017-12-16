@@ -2,6 +2,7 @@
 
 const state = {
   errands: [],
+  displayTimes: [],
 };
 
 // clears results field, takes in data object
@@ -18,7 +19,10 @@ const displayWrapper = (tripData) => {
 // use state.errands length to iterate through using map?
 // use filter to iterate through the object and get the duration text?
 const processData = (data) => {
-  const allLegs = data.routes[0].legs.map(itm => console.log('items!', itm.duration.text));
+  const allLegs = data.routes[0].legs.map((itm) => {
+    state.displayTimes.push(itm.duration.text);
+    console.log('items!', state.displayTimes);
+  });
 
 
   const leg1Human = data.routes[0].legs[0].duration.text;
@@ -94,7 +98,7 @@ const getInput = () => {
       });
     });
     console.log('errands!', state.errands);
-    route(start, state.errands, /* errands, */ routeDataProcess);
+    route(start, state.errands, routeDataProcess);
   });
 };
 
