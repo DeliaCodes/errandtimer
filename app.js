@@ -87,17 +87,10 @@ const insertErrand = () => {
   $('#addErrand').click(renderErrand);
 };
 
-// adds errand to an object for passing to maps APU - pure
-// figure out how to add errands with errand 1 (or maybe)
-/* const convertErrand = input => [{
-  location: input,
-}]; */
-
 // gets the submitted input from user - impure d/t jquery
 const getInput = () => {
   $('#errandForm').submit((event) => {
     event.preventDefault();
-    // const errand1 = $('#errand0').val();
     const start = $('#start').val();
     $('.errands').each(function () {
       console.log('inner', $(this).val());
