@@ -21,8 +21,6 @@ const displayWrapper = (tripData) => {
 };
 
 // process data function - gets data, humanizes it, sends it to display
-// use state.errands length to iterate through using map?
-// use filter to iterate through the object and get the duration text?
 const processData = (data) => {
   const allLegs = data.routes[0].legs.map((itm) => {
     state.displayTimes.push(itm.duration.text);
@@ -49,6 +47,7 @@ const routeDataProcess = (response, status) => {
   if (status === 'OK') {
     console.log('response!', response);
     processData(response);
+    /*    directionsDisplay.setDirections(response); */
   }
 };
 
