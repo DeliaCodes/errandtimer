@@ -3,6 +3,7 @@
 const state = {
   errands: [],
   displayTimes: [],
+  durationTimes: [],
 };
 
 // clears results field, takes in data object
@@ -14,7 +15,7 @@ const displayWrapper = (tripData) => {
       const legCount = i + 1;
       $('#results').append(`<p> Leg ${legCount} of your errands will take about <strong>${state.displayTimes[i]}</strong>.`);
     }
-    $('#results').append(`<p> for a total travel time of about ${tripData.totalDuration}.</p>`)
+    $('#results').append(`<p> for a total travel time of about ${tripData.totalDuration}.</p>`);
   };
   displayData();
 };
@@ -27,13 +28,18 @@ const processData = (data) => {
     state.displayTimes.push(itm.duration.text);
     console.log('items!', state.displayTimes);
   });
-  const leg1Human = data.routes[0].legs[0].duration.text;
-  const leg1Time = data.routes[0].legs[0].duration.value;
-  const leg2Time = data.routes[0].legs[1].duration.value;
-  const totalDuration = moment.duration(leg1Time + leg2Time, 'seconds').humanize();
+  /* const duration = data.routes[0].legs.map((itm) => {
+    itm.duration.value.reduce((accumulator, current) => accumulator + current, 0);
+    console.log('durated!', );
+  }); */
+  const duration = data.routes[0].legs.map((itm) => {
+    state.durationTimes.push(itm.duration.value);
+  });
+  const times = state.durationTimes.reduce((acc, curr) => acc + curr, 0)
+  console.log('timed!', times)
+  const totalDuration = moment.duration(times, 'seconds').humanize();
   const tripData = {
     totalDuration,
-    leg1Human,
   };
   return displayWrapper(tripData);
 };
