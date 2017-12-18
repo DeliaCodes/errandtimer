@@ -45,6 +45,7 @@ const processData = (data) => {
   return displayWrapper(tripData);
 };
 
+// not working
 // callback for Maps API request, on success hands data to be processed - impure
 const routeDataProcess = (response, status) => {
   if (status === 'OK') {
@@ -54,6 +55,7 @@ const routeDataProcess = (response, status) => {
   }
 };
 
+// working
 // calls the maps route API request- impure d/t the google maps
 const route = (start, errand1, callback) => {
   console.log('route', errand1);
@@ -68,23 +70,27 @@ const route = (start, errand1, callback) => {
   directionsService.route(request, callback);
 };
 
+// working
 const addAutoComplete = (errand) => {
   console.log('auto', errand);
   const searchBoxErrand = new google.maps.places.SearchBox(errand);
   searchBoxErrand.addListener('places_changed', () => {});
 };
 
+// working
 const generateErrand = () => `<div class="responsive">
 <label id="errand" for="errand">Errand Street Address:</label>
 <input class="errands" type="text" name="enter errand street address">
 </div>`;
 
+// working
 const renderErrand = () => {
   const newErrand = $(generateErrand());
   $('.row').append(newErrand);
   addAutoComplete(newErrand.find('input').get(0));
 };
 
+// working
 const insertErrand = () => {
   $('#addErrand').click(renderErrand);
 };
@@ -100,7 +106,7 @@ const getInput = () => {
         location: $(this).val(),
       });
     });
-    // console.log('errands!', state.errands);
+    console.log('errands!', state.errands);
     route(start, state.errands, routeDataProcess);
   });
 };
