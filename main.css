@@ -23,10 +23,12 @@ body {
   margin: auto;
   max-width: 10em;
   display: inherit;
+  font-size: 1vw;
 }
 
 ul {
   text-align: left;
+  font-size: 1vw;
 }
 
 #introContainer {
@@ -146,6 +148,9 @@ button {
   .row {
     display: flex;
     flex-direction: column;
+  }
+  #introContainer {
+    max-width: 70%;
   }
   .submit {
     max-width: 100%;
