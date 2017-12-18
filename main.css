@@ -25,12 +25,16 @@ body {
   display: inherit;
 }
 
+ul {
+  text-align: left;
+}
+
 #introContainer {
   background-color: #ffffff;
   border: #000000 solid 2px;
   margin: auto;
   text-align: center;
-  max-width: 40%;
+  max-width: 50%;
 }
 
 #mapContainer {
