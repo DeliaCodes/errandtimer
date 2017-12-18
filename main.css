@@ -1,5 +1,7 @@
 html {
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -7,17 +9,30 @@ body {
   font-family: 'Istok Web', sans-serif;
   text-decoration-color: #5B3D91;
   height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#mapContainer {
+  height: auto;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
 }
 
 #map {
   height: 100%;
 }
 
-#container {
+#sidebarContainer {
+  position: absolute;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  max-width: 12em;
+  width: 20%;
+  z-index: 1;
 }
 
 #container h1 {
