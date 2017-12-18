@@ -80,6 +80,10 @@ ul {
   box-sizing: border-box;
 }
 
+.responsive {
+  padding-bottom: 1em;
+}
+
 #errandForm {
   padding-bottom: 3em;
 }
@@ -88,8 +92,8 @@ ul {
   cursor: pointer;
   background: #5B3D91;
   color: #ffffff;
-  margin-top: 1em;
-  margin-left: 5em;
+  margin-left: 27%;
+  font-size: 1.5vw;
 }
 
 button {
@@ -138,8 +142,6 @@ button {
   font-size: small;
 }
 
-#addErrand {}
-
 @media only screen and (orientation: portrait) {
   .row {
     display: flex;
@@ -147,6 +149,7 @@ button {
   }
   .submit {
     max-width: 100%;
+    font-size: 2vw;
   }
   #container h1 {
     font-size: 4vw;
@@ -156,5 +159,8 @@ button {
   }
   body {
     font-size: 2.5vw;
+  }
+  #addErrand {
+    font-size: 2vw;
   }
 }
