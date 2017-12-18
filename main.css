@@ -38,12 +38,12 @@ body {
 }
 
 #container h1 {
-  font-size: 1.5vw;
+  font-size: 2vw;
 }
 
 #container h3 {
   margin: 0 auto;
-  font-size: 1vw;
+  font-size: 1.5vw;
   padding-bottom: 1em;
 }
 
@@ -107,5 +107,14 @@ body {
   }
   .submit {
     max-width: 100%;
+  }
+  #container h1 {
+    font-size: 4vw;
+  }
+  #container h3 {
+    font-size: 3vw;
+  }
+  body {
+    font-size: 2.5vw;
   }
 }
