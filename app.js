@@ -114,6 +114,13 @@ function initAutocomplete() {
   searchBoxOrigin.addListener('places_changed', () => {});
   const searchBoxErrand = new google.maps.places.SearchBox(inputErrand);
   searchBoxErrand.addListener('places_changed', () => {});
+  const map = new google.maps.Map(document.getElementById('map'), {
+    center: {
+      lat: -34.397,
+      lng: 150.644,
+    },
+    zoom: 8,
+  });
   insertErrand();
   $(getInput);
 }
