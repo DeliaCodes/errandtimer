@@ -13,6 +13,25 @@ body {
   padding: 0;
 }
 
+.background {
+  background: url(./pexels-photo.jpg) no-repeat center center fixed;
+  width: 100%;
+  height: auto;
+}
+
+#begin {
+  margin: auto;
+  max-width: 10em;
+  display: inherit;
+}
+
+#introContainer {
+  background-color: #ffffff;
+  border: #000000 solid 2px;
+  margin: auto;
+  text-align: center;
+}
+
 #mapContainer {
   height: auto;
   width: 100%;
@@ -99,6 +118,8 @@ body {
   left: 0;
   font-size: small;
 }
+
+#addErrand {}
 
 @media only screen and (orientation: portrait) {
   .row {
