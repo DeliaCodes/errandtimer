@@ -24,6 +24,13 @@ body {
   max-width: 10em;
   display: inherit;
   font-size: 1vw;
+  border: #ffffff solid 2px;
+}
+
+#logo {
+  border: #000000 solid 2px;
+  padding: 2px;
+  background-color: white;
 }
 
 ul {
