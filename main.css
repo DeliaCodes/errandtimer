@@ -76,8 +76,12 @@ ul {
   margin: 0 auto;
 }
 
-#errandForm input {
+#errandForm * {
   box-sizing: border-box;
+}
+
+#errandForm {
+  padding-bottom: 3em;
 }
 
 .submit {
@@ -86,6 +90,16 @@ ul {
   color: #ffffff;
   margin-top: 1em;
   margin-left: 5em;
+}
+
+button {
+  color: #ffffff;
+  background: #5B3D91;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 1vw;
 }
 
 .link {
