@@ -26,10 +26,13 @@ const processData = (data) => {
     state.displayTimes.push(itm.duration.text);
     console.log('items!', state.displayTimes);
   });
-  /* const duration = data.routes[0].legs.map((itm) => {
-    itm.duration.value.reduce((accumulator, current) => accumulator + current, 0);
-    console.log('durated!', );
-  }); */
+  /*   const getRoute = routes => routes[0];
+      const getRouteLegs = routes => routes.legs;
+      const getNumberOfSecondsForLeg = legs => legs.duration.value;
+      const sum = array => array.reduce((acc, val) => acc + val);
+      const getLegDurations = routes => getRouteLegs(getRoute(routes)).map(getNumberOfSecondsForLeg);
+      const times = sum(getLegDurations(data,routes), 0); */
+
   const duration = data.routes[0].legs.map((itm) => {
     state.durationTimes.push(itm.duration.value);
   });
