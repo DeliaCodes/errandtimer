@@ -2,7 +2,7 @@
 
 const state = {
   errands: [],
-  displayTimes: [],
+  // displayTimes: [],
 };
 
 // const directionsDisplay = () => new google.maps.DirectionsRenderer();
@@ -12,9 +12,9 @@ const displayWrapper = (tripData) => {
   $('#results').html('');
   // displays data to user
   const displayData = () => {
-    for (i = 0; i < state.displayTimes.length; i++) {
+    for (i = 0; i < tripData.legsDurationEstimates.length; i++) {
       const legCount = i + 1;
-      $('#results').append(`<p> Leg ${legCount} of your errands will take about <strong>${state.displayTimes[i]}</strong>.`);
+      $('#results').append(`<p> Leg ${legCount} of your errands will take about <strong>${tripData.legsDurationEstimates[i]}</strong>.`);
     }
     $('#results').append(`<p> for a total travel time of about ${tripData.totalDuration}.</p>`);
   };
@@ -27,20 +27,28 @@ const getRouteLegs = routes => routes.legs;
 
 const getNumberOfSecondsForLeg = legs => legs.duration.value;
 
+const getGoogleMapsLegTimeEstimate = legs => legs.duration.text;
+
+const getLegEstimates = routes => getRouteLegs(getRoute(routes)).map(getGoogleMapsLegTimeEstimate);
+
 const sum = array => array.reduce((acc, val) => acc + val);
 
 // process data function - gets data, humanizes it, sends it to display
 const processData = (data) => {
-  const allLegs = data.routes[0].legs.map((itm) => {
-    state.displayTimes.push(itm.duration.text);
-    // console.log('items!', state.displayTimes);
-  });
+  /*  const allLegs = data.routes[0].legs.map((itm) => {
+     state.displayTimes.push(itm.duration.text);
+     // console.log('items!', state.displayTimes);
+   }); */
+  const legsDurationEstimates = [];
+  legsDurationEstimates.push(getLegEstimates(data.routes));
+
   const getLegDurations = routes => getRouteLegs(getRoute(routes)).map(getNumberOfSecondsForLeg);
   const times = sum(getLegDurations(data.routes), 0);
   // console.log('timed!', times)
   const totalDuration = moment.duration(times, 'seconds').humanize();
   const tripData = {
     totalDuration,
+    legsDurationEstimates,
   };
   return displayWrapper(tripData);
 };
