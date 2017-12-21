@@ -2,7 +2,6 @@
 
 const state = {
   errands: [],
-  // displayTimes: [],
 };
 
 // const directionsDisplay = () => new google.maps.DirectionsRenderer();
@@ -11,11 +10,17 @@ const state = {
 const displayWrapper = (tripData) => {
   $('#results').html('');
   // displays data to user
+  const getLegsToDisplay = legData => legData.legsDurationEstimates.map((time, index) => {
+    const count = index + 1;
+    return $('#results').append(`<p> Leg ${count} of your errands will take about <strong>${time}</strong>.`);
+  });
   const displayData = () => {
-    for (i = 0; i < tripData.legsDurationEstimates.length; i++) {
-      const legCount = i + 1;
-      $('#results').append(`<p> Leg ${legCount} of your errands will take about <strong>${tripData.legsDurationEstimates[i]}</strong>.`);
-    }
+    getLegsToDisplay(tripData);
+    /* 
+        for (i = 0; i < tripData.legsDurationEstimates.length; i++) {
+          const legCount = i + 1;
+           */
+    /*    getLegsToDisplay($('#results').append(`<p> Leg of your errands will take about <strong>${tripData.legsDurationEstimates}</strong>.`)); */
     $('#results').append(`<p> for a total travel time of about ${tripData.totalDuration}.</p>`);
   };
   displayData();
@@ -35,10 +40,6 @@ const sum = array => array.reduce((acc, val) => acc + val);
 
 // process data function - gets data, humanizes it, sends it to display
 const processData = (data) => {
-  /*  const allLegs = data.routes[0].legs.map((itm) => {
-     state.displayTimes.push(itm.duration.text);
-     // console.log('items!', state.displayTimes);
-   }); */
   const legsDurationEstimates = [];
   legsDurationEstimates.push(getLegEstimates(data.routes));
 
