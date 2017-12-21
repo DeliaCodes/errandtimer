@@ -41,7 +41,6 @@ const processData = (data) => {
 
   const getLegDurations = routes => getRouteLegs(getRoute(routes)).map(getNumberOfSecondsForLeg);
   const times = sum(getLegDurations(data.routes), 0);
-  // console.log('timed!', times)
   const totalDuration = moment.duration(times, 'seconds').humanize();
   const tripData = {
     totalDuration,
@@ -53,7 +52,6 @@ const processData = (data) => {
 // callback for Maps API request, on success hands data to be processed - impure
 const routeDataProcess = (response, status) => {
   if (status === 'OK') {
-    // console.log('response!', response);
     processData(response);
     const directionsDisplay = new google.maps.DirectionsRenderer;
     directionsDisplay.setDirections(response);
@@ -62,7 +60,6 @@ const routeDataProcess = (response, status) => {
 
 // calls the maps route API request- impure d/t the google maps
 const route = (start, errand1, callback) => {
-  // console.log('route', errand1);
   const request = {
     origin: start,
     destination: start,
@@ -76,7 +73,6 @@ const route = (start, errand1, callback) => {
 };
 
 const addAutoComplete = (errand) => {
-  // console.log('auto', errand);
   const searchBoxErrand = new google.maps.places.SearchBox(errand);
   searchBoxErrand.addListener('places_changed', () => {});
 };
@@ -103,12 +99,10 @@ const getInput = () => {
     state.errands = [];
     const start = $('#start').val();
     $('.errands').each(function () {
-      // console.log('inner', $(this).val());
       state.errands.push({
         location: $(this).val(),
       });
     });
-    // console.log('errands!', state.errands);
     route(start, state.errands, routeDataProcess);
   });
 };
