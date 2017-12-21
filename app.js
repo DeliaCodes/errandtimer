@@ -10,17 +10,13 @@ const state = {
 const displayWrapper = (tripData) => {
   $('#results').html('');
   // displays data to user
-  const getLegsToDisplay = legData => legData.legsDurationEstimates.map((time, index) => {
-    const count = index + 1;
-    return $('#results').append(`<p> Leg ${count} of your errands will take about <strong>${time}</strong>.`);
-  });
+
   const displayData = () => {
-    getLegsToDisplay(tripData);
-    /* 
-        for (i = 0; i < tripData.legsDurationEstimates.length; i++) {
-          const legCount = i + 1;
-           */
-    /*    getLegsToDisplay($('#results').append(`<p> Leg of your errands will take about <strong>${tripData.legsDurationEstimates}</strong>.`)); */
+    const displayLeg = tripData.legsDurationEstimates[0];
+    $(displayLeg).each((index) => {
+      const count = index + 1;
+      return $('#results').append(`<p> Leg ${count} of your errands will take about <strong>${displayLeg[index]}</strong>.`);
+    });
     $('#results').append(`<p> for a total travel time of about ${tripData.totalDuration}.</p>`);
   };
   displayData();
