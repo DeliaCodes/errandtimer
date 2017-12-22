@@ -12,6 +12,8 @@ Errand Timer is a simple application that takes in a starting and destination ad
 
 !['Results Screenshot'](https://github.com/DeliaCodes/errandtimer/blob/master/searchresults.PNG "Results Screenshot")
 
+!['Multiple Errands Results Screenshot'](https://github.com/DeliaCodes/errandtimer/blob/master/searchmultiresults.PNG "Multiple Errands Results Screenshot")
+
 Technologies used are HTML, CSS, Javascript, and Jquery. APIs called: Google Maps - direction service and searchbox. Library's used: MomentJS.
 
 Feedback welcome! 
