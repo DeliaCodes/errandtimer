@@ -1,16 +1,10 @@
 /* global $, moment, google, document  */
 
-const state = {
-  errands: [],
-};
-
-// const directionsDisplay = () => new google.maps.DirectionsRenderer();
-
 // clears results field, takes in data object
 const displayWrapper = (tripData) => {
   $('#results').html('');
-  // displays data to user
 
+  // displays data to user
   const displayData = () => {
     const displayLeg = tripData.legsDurationEstimates;
     $(displayLeg).each((index) => {
@@ -22,27 +16,38 @@ const displayWrapper = (tripData) => {
   displayData();
 };
 
+// selects the Route portion of the data
 const getRoute = routes => routes[0];
 
+// selects the legs within the route data
 const getRouteLegs = routes => routes.legs;
 
+// selects the leg duration in seconds of the trip leg
 const getNumberOfSecondsForLeg = legs => legs.duration.value;
 
+// selects the human readable duration portion of the data
 const getGoogleMapsLegTimeEstimate = legs => legs.duration.text;
 
+// gets the human readable durations for each leg of the trip
 const getLegEstimates = routes => getRouteLegs(getRoute(routes)).map(getGoogleMapsLegTimeEstimate);
 
+// uses reduce to total up the values passed to it
 const sum = array => array.reduce((acc, val) => acc + val);
 
-// process data function - gets data, humanizes it, sends it to display
-const processData = (data) => {
-  // const legsDurationEstimates = [];
-  const legsDurationEstimates = getLegEstimates(data.routes);
-  // legsDurationEstimates.push(getLegEstimates(data.routes));
 
+// take in response data, humanizes it, sends it to display
+const processData = (data) => {
+  const legsDurationEstimates = getLegEstimates(data.routes);
+
+  // gets the duration in seconds of each leg of the trip
   const getLegDurations = routes => getRouteLegs(getRoute(routes)).map(getNumberOfSecondsForLeg);
+
+  // Totals up each portion of the trip in seconds.
   const times = sum(getLegDurations(data.routes), 0);
+
+  // Humanizes the duration in seconds using MomentsJS
   const totalDuration = moment.duration(times, 'seconds').humanize();
+
   const tripData = {
     totalDuration,
     legsDurationEstimates,
@@ -50,7 +55,9 @@ const processData = (data) => {
   return displayWrapper(tripData);
 };
 
-// callback for Maps API request, on success hands data to be processed - impure
+/* callback for Maps API request.
+on success hands data to be processed
+on error hands user an error message */
 const getMapsFromGoogle = (response, status) => {
   if (status === 'OK') {
     processData(response);
@@ -70,7 +77,7 @@ const getMapsFromGoogle = (response, status) => {
   }
 };
 
-// calls the maps route API request- impure d/t the google maps
+// calls the maps route API request via Map's Directions Service
 const route = (start, errand1, callback) => {
   const request = {
     origin: start,
@@ -80,26 +87,29 @@ const route = (start, errand1, callback) => {
     travelMode: 'DRIVING',
   };
   const directionsService = new google.maps.DirectionsService();
-
   directionsService.route(request, callback);
 };
 
+// initiates Google Maps Search Autocomplete service
 const addAutoComplete = (errand) => {
   const searchBoxErrand = new google.maps.places.SearchBox(errand);
   searchBoxErrand.addListener('places_changed', () => {});
 };
 
+// html template for additional errands
 const generateErrand = () => `<div class="responsive">
 <label id="errand" for="errand">Errand Street Address:</label>
 <input class="errands" type="text" name="enter errand street address">
 </div>`;
 
+// inserts the errand into the DOM
 const renderErrand = () => {
   const newErrand = $(generateErrand());
   $('.row').append(newErrand);
   addAutoComplete(newErrand.find('input').get(0));
 };
 
+// accepts the click from the user to add another errand
 const insertErrand = () => {
   $('#addErrand').click(renderErrand);
 };
@@ -127,7 +137,6 @@ function initAutocomplete() {
   searchBoxOrigin.addListener('places_changed', () => {});
   const searchBoxErrand = new google.maps.places.SearchBox(inputErrand);
   searchBoxErrand.addListener('places_changed', () => {});
-
   insertErrand();
   $(getInput);
 }
