@@ -51,7 +51,7 @@ const processData = (data) => {
 };
 
 // callback for Maps API request, on success hands data to be processed - impure
-const routeDataProcess = (response, status) => {
+const getMapsFromGoogle = (response, status) => {
   if (status === 'OK') {
     processData(response);
     const map = new google.maps.Map(document.getElementById('map'), {
@@ -65,6 +65,8 @@ const routeDataProcess = (response, status) => {
       map,
     });
     directionsDisplay.setDirections(response);
+  } else {
+    $('#results').append('<p>Your search returned an error. Please check your addresses and try again</p>');
   }
 };
 
@@ -112,7 +114,7 @@ const getInput = () => {
         location: $(itm).val(),
       };
     }).filter(itm => itm.location !== '');
-    route(start, errands, routeDataProcess);
+    route(start, errands, getMapsFromGoogle);
   });
 };
 
