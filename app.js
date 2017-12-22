@@ -73,7 +73,8 @@ const getMapsFromGoogle = (response, status) => {
     });
     directionsDisplay.setDirections(response);
   } else {
-    $('#results').append('<p>Your search returned an error. Please check your addresses and try again</p>');
+    $('#results').html('');
+    $('#results').append('<p><strong>Your search returned an error.</strong> Please check your addresses and try again</p>');
   }
 };
 
