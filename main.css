@@ -159,6 +159,16 @@ button {
   #sidebarContainer {
     min-width: 30%;
   }
+  body {
+    font-size: 2vw;
+  }
+  #addErrand {
+    font-size: 2vw;
+  }
+  .submit {
+    font-size: 2vw;
+    margin-left: 0;
+  }
 }
 
 @media only screen and (orientation: portrait) {
@@ -183,9 +193,13 @@ button {
     font-size: 3vw;
   }
   body {
-    font-size: 2.5vw;
+    font-size: 3vw;
   }
   #addErrand {
-    font-size: 2vw;
+    font-size: 3vw;
+  }
+  .submit {
+    font-size: 4vw;
+    margin-left: 0;
   }
 }
