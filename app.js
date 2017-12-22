@@ -110,7 +110,7 @@ const getInput = () => {
     const errands = $('.errands').toArray().map(function (itm) {
       return {
         location: $(itm).val(),
-      }
+      };
     }).filter(itm => itm.location !== '');
     route(start, errands, routeDataProcess);
   });
