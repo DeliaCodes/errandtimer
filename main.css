@@ -155,9 +155,10 @@ button {
   font-size: small;
 }
 
-@media only screen and (orientation: landscape) {
+@media only screen and (max-device-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
   #sidebarContainer {
-    min-width: 30%;
+    min-width: 35%;
+    padding-right: 1em;
   }
   body {
     font-size: 2vw;
