@@ -21,9 +21,9 @@ body {
 
 #begin {
   margin: auto;
-  max-width: 10em;
+  max-width: 15em;
   display: inherit;
-  font-size: 1vw;
+  font-size: 2vw;
   border: #ffffff solid 2px;
 }
 
